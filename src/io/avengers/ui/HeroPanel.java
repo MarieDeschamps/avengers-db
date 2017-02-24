@@ -29,7 +29,7 @@ public class HeroPanel extends JPanel {
 	
 	public void addHeroes(Set<Hero> heroes){
 		for(Hero hero: heroes){
-			JLabel label = new JLabel(hero.getName());
+			JLabel label = new JLabel(hero.getAlias());
 			getPanel().add(label);
 		}
 	}

@@ -1,24 +1,34 @@
 package io.avengers.domain;
 
+import java.util.List;
+
 public class Hero {
 	int id;
-	String name;
+	String alias;
+	String realName;
 	Sex sex;
 	long likes;
 	long dislikes;
-	 
-	public Hero(int id, String name, Sex sex, long likes, long dislikes) {
+	String abilities;
+	List<Team> teams;
+	List<Movie> movies;
+	byte[] picture;
+	
+	public Hero(int id, String alias, String realName, String abilities, List<Team> teams, List<Movie> movies,
+			byte[] picture) {
 		super();
 		this.id = id;
-		this.name = name;
-		this.sex = sex;
-		this.likes = likes;
-		this.dislikes = dislikes;
+		this.alias = alias;
+		this.realName = realName;
+		this.abilities = abilities;
+		this.teams = teams;
+		this.movies = movies;
+		this.picture = picture;
 	}
-	
+
 	@Override
 	public String toString() {
-		return this.name;
+		return this.alias;
 	}
 
 	public int getId() {
@@ -29,36 +39,54 @@ public class Hero {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getAlias() {
+		return alias;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setAlias(String alias) {
+		this.alias = alias;
 	}
 
-	public Sex getSex() {
-		return sex;
+	public String getRealName() {
+		return realName;
 	}
 
-	public void setSex(Sex sex) {
-		this.sex = sex;
+	public void setRealName(String realName) {
+		this.realName = realName;
 	}
 
-	public long getLikes() {
-		return likes;
+	public String getAbilities() {
+		return abilities;
 	}
 
-	public void setLikes(long likes) {
-		this.likes = likes;
+	public void setAbilities(String abilities) {
+		this.abilities = abilities;
 	}
 
-	public long getDislikes() {
-		return dislikes;
+	public List<Team> getTeams() {
+		return teams;
 	}
 
-	public void setDislikes(long dislikes) {
-		this.dislikes = dislikes;
+	public void setTeams(List<Team> teams) {
+		this.teams = teams;
 	}
+
+	public List<Movie> getMovies() {
+		return movies;
+	}
+
+	public void setMovies(List<Movie> movies) {
+		this.movies = movies;
+	}
+
+	public byte[] getPicture() {
+		return picture;
+	}
+
+	public void setPicture(byte[] picture) {
+		this.picture = picture;
+	}
+
+	
 
 }

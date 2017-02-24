@@ -28,8 +28,8 @@ public class HeroDao {
 
 	public Set<Hero> findAll() throws SQLException {
 		String query = "SELECT h.id AS hero_id, h.name AS alias, h.picture "
-				+ "FROM heroes h"
-				+ "ORDER BY alias ASC";
+				+ "FROM heroes h "
+				+ "ORDER BY h.name ASC";
 
 		Connection connect = connectToMySql();
 
@@ -49,7 +49,7 @@ public class HeroDao {
 	}
 
 	public Set<Hero> findHeroesByName(String term) throws SQLException {
-		String query = "SELECT h.name AS alias, h.id AS hero_id FROM heroes h WHERE name LIKE%" + term + "% ORDER BY h.name";
+		String query = "SELECT h.name AS alias, h.id AS hero_id FROM heroes h WHERE h.name LIKE '%" + term + "%'";
 
 		Connection connect = connectToMySql();
 
@@ -80,7 +80,7 @@ public class HeroDao {
 		ResultSet resultSet = statement.executeQuery(query);
 
 		Hero hero = null;
-		if (!resultSet.wasNull()) {
+		if (resultSet.next()) {
 			hero = resultSetToHero(resultSet);
 		}
 
@@ -102,12 +102,16 @@ public class HeroDao {
 		try {
 			int id = resultSet.getInt("hero_id");
 
-			String name = resultSet.getString("alias");
+			String alias = resultSet.getString("alias");
+			String realName = resultSet.getString("realName");
+			String abilities = resultSet.getString("abilities");
+			
 			// pour differencier avec l'enum
 
-			Hero h = new Hero(id, name, Sex.O, 0, 0);
+			Hero h = new Hero(id, alias, realName, abilities, null, null, null);
 			return h;
 		} catch (SQLException e) {
+			e.printStackTrace();
 			throw new IllegalStateException("Database has been compromised: " + e.getMessage());
 		}
 	}

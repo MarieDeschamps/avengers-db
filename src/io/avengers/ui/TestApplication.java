@@ -10,7 +10,7 @@ public class TestApplication {
 		//System.out.println(dao.findAll());
 		
 		HeroService service = new HeroService();
-		System.out.println(service.findAll());
+		System.out.println(service.findHero(1));
 		
 	}
 
