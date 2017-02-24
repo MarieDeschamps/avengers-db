@@ -19,11 +19,9 @@ public class HeroDao {
 	public HeroDao() {
 		if (c == null) {
 			try {
-
 				c = Class.forName("com.mysql.jdbc.Driver");
-
 			} catch (ClassNotFoundException e) {
-				throw new IllegalStateException("SQL driver is not here: " + e.getMessage());
+				throw new IllegalStateException("SQL Driver is not here: " + e.getMessage());
 			}
 		}
 	}
@@ -32,7 +30,27 @@ public class HeroDao {
 		String query = "SELECT h.id AS hero_id, h.name AS alias, h.picture "
 				+ "FROM heroes h"
 				+ "ORDER BY alias ASC";
-		
+
+		Connection connect = connectToMySql();
+
+		Statement statement = connect.createStatement();
+		ResultSet resultSet = statement.executeQuery(query);
+
+		Set<Hero> heroes = new HashSet<>();
+
+		while (resultSet.next()) {
+
+			heroes.add(resultSetToHero(resultSet));
+		}
+
+		connect.close();
+
+		return heroes;
+	}
+
+	public Set<Hero> findHeroesByName(String term) throws SQLException {
+		String query = "SELECT h.name AS alias, h.id AS hero_id FROM heroes h WHERE name LIKE%" + term + "% ORDER BY h.name";
+
 		Connection connect = connectToMySql();
 
 		Statement statement = connect.createStatement();
@@ -92,7 +110,6 @@ public class HeroDao {
 		} catch (SQLException e) {
 			throw new IllegalStateException("Database has been compromised: " + e.getMessage());
 		}
-
 	}
 
 }

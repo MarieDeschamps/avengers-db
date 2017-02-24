@@ -7,8 +7,8 @@ import io.avengers.dao.HeroDao;
 import io.avengers.domain.Hero;
 
 public class HeroService {
-
-	IllegalStateException stateException= new IllegalStateException("Database error! Please, try again later");
+	
+	IllegalStateException stateException = new IllegalStateException("Connection impossible, try again later");
 	
 	public Set<Hero> findAll() {
 		try {
@@ -32,4 +32,23 @@ public class HeroService {
 		}
 	}
 
+	public Set<Hero> findHeroesByName(String term) {
+		
+		if(term== null){
+			System.out.println("Potential bug or illegal request");
+			return this.findAll();
+		}
+		
+		if(term.isEmpty()){
+			return this.findAll();
+		}
+		
+		try {
+			return new HeroDao().findHeroesByName(term);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw stateException;
+		}
+
+	}
 }
