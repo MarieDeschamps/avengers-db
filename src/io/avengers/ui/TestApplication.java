@@ -2,6 +2,7 @@ package io.avengers.ui;
 
 import io.avengers.dao.HeroDao;
 import io.avengers.service.HeroService;
+import io.avengers.service.MovieService;
 
 public class TestApplication {
 
@@ -9,8 +10,8 @@ public class TestApplication {
 		//HeroDao dao = new HeroDao();
 		//System.out.println(dao.findAll());
 		
-		HeroService service = new HeroService();
-		System.out.println(service.findHero(1));
+		MovieService service = new MovieService();
+		System.out.println(service.findMovie(1));
 		
 	}
 

@@ -58,7 +58,7 @@ public class MovieDao extends MarvelDao {
 				+ "LEFT JOIN heroes h ON h.id = mh.id_hero "
 				+ "LEFT JOIN team_hero th ON h.id = th.hero_id "
 				+ "LEFT JOIN team t ON th.team_id = t.team_id "
-				+ "WHERE m.id = movieID;";
+				+ "WHERE m.id = "+ movieID+";";
 
 		Connection connect = connectToMySql();
 
