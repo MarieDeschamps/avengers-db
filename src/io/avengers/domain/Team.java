@@ -3,13 +3,14 @@ package io.avengers.domain;
 import java.util.List;
 
 public class Team {
+	int id;
 	String name;
 	byte[] picture;
 	List<Hero> heroes;
 	List<Movie> movies;
 	
-	public Team(String name, byte[] picture, List<Hero> heroes, List<Movie> movies) {
-		super();
+	public Team(int id, String name, byte[] picture, List<Hero> heroes, List<Movie> movies) {
+		this.id = id;
 		this.name = name;
 		this.picture = picture;
 		this.heroes = heroes;
