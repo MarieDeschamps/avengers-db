@@ -74,7 +74,6 @@ public class Movie {
 	
 	@Override
 	public String toString() {
-		// TODO Auto-generated method stub
 		return movie_title + "\r\n" + date;
 	}
 	
