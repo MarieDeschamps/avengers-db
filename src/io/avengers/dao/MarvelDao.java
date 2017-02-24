@@ -8,7 +8,6 @@ public class MarvelDao {
 
 	static Class c;
 	
-	
 	public MarvelDao() {
 		if (c == null) {
 			try {
