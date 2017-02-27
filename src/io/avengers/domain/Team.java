@@ -1,5 +1,6 @@
 package io.avengers.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Team {
@@ -13,8 +14,16 @@ public class Team {
 		this.id = id;
 		this.name = name;
 		this.picture = picture;
-		this.heroes = heroes;
-		this.movies = movies;
+		if(heroes == null){
+			heroes = new ArrayList<>();
+		}else{
+			this.heroes = heroes;
+		}
+		if(movies == null){
+			movies = new ArrayList<>();
+		}else{
+			this.movies = movies;
+		}
 	}
 
 	public String getName() {

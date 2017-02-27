@@ -1,5 +1,6 @@
 package io.avengers.domain;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Hero {
@@ -21,8 +22,16 @@ public class Hero {
 		this.alias = alias;
 		this.realName = realName;
 		this.abilities = abilities;
-		this.teams = teams;
-		this.movies = movies;
+		if(teams == null){
+			teams = new ArrayList<>();
+		}else{
+			this.teams = teams;
+		}
+		if(movies == null){
+			movies = new ArrayList<>();
+		}else{
+			this.movies = movies;
+		}
 		this.picture = picture;
 	}
 
