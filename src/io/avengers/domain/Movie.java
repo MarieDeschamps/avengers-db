@@ -1,6 +1,7 @@
 package io.avengers.domain;
 
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Movie {
@@ -10,18 +11,26 @@ public class Movie {
 	String synopsis;
 	long budget;
 	List<Hero> heroes;
-	List<Movie> movies;
+	List<Team> teams;
 	byte[] picture;
 	Date date;
-	public Movie(int movie_id, String movie_title, String synopsis, long budget, List<Hero> heroes, List<Movie> movies,
+	public Movie(int movie_id, String movie_title, String synopsis, long budget, List<Hero> heroes, List<Team> teams,
 			byte[] picture, Date date) {
 		super();
 		this.movie_id = movie_id;
 		this.movie_title = movie_title;
 		this.synopsis = synopsis;
 		this.budget = budget;
-		this.heroes = heroes;
-		this.movies = movies;
+		if(heroes == null){
+			heroes = new ArrayList<>();
+		}else{
+			this.heroes = heroes;
+		}
+		if(teams == null){
+			teams = new ArrayList<>();
+		}else{
+			this.teams = teams;
+		}
 		this.picture = picture;
 		this.date = date;
 	}
@@ -53,11 +62,11 @@ public class Movie {
 	public void setHeroes(List<Hero> heroes) {
 		this.heroes = heroes;
 	}
-	public List<Movie> getMovies() {
-		return movies;
+	public List<Team> Team() {
+		return teams;
 	}
-	public void setMovies(List<Movie> movies) {
-		this.movies = movies;
+	public void setTeam(List<Team> teams) {
+		this.teams = teams;
 	}
 	public byte[] getPicture() {
 		return picture;
