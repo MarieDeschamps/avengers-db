@@ -59,9 +59,12 @@ public class HeroDao extends MarvelDao{
 		String query = "SELECT h.id AS hero_id, h.name AS alias, irl.name as realName, h.abilities, h.picture AS heroPicture, "
 				+ "t.name AS team_name, t. team_id, t.picture AS teamPicture, "
 				+ "m.name AS movie_title,  m.id AS movie_id, m.picture AS moviePicture, m.history AS synopsis, m.budget AS budget "
-				+ "FROM `heroes`  h LEFT JOIN `irl` irl ON h.id = irl.hero_id "
-				+ "LEFT JOIN movie_hero mh ON h.id = mh.id_hero " + "LEFT JOIN `movie` m ON m.id = mh.id_movie "
-				+ "LEFT JOIN team_hero th ON h.id = th.hero_id " + "LEFT JOIN team t ON th.team_id = t.team_id "
+				+ "FROM `heroes`  h "
+				+ "LEFT JOIN `irl` irl ON h.id = irl.hero_id "
+				+ "LEFT JOIN movie_hero mh ON h.id = mh.id_hero " 
+				+ "LEFT JOIN `movie` m ON m.id = mh.id_movie "
+				+ "LEFT JOIN team_hero th ON h.id = th.hero_id " 
+				+ "LEFT JOIN team t ON th.team_id = t.team_id "
 				+ "WHERE h.id = " + characterID + ";";
 
 		Connection connect = connectToMySql();
