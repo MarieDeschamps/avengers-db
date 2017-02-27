@@ -66,6 +66,10 @@ public class Hero {
 	public void setTeams(List<Team> teams) {
 		this.teams = teams;
 	}
+	
+	public void addTeam(Team team) {
+		teams.add(team);
+	}
 
 	public List<Movie> getMovies() {
 		return movies;
@@ -73,6 +77,10 @@ public class Hero {
 
 	public void setMovies(List<Movie> movies) {
 		this.movies = movies;
+	}
+	
+	public void addMovie(Movie movie) {
+		movies.add(movie);
 	}
 
 	public byte[] getPicture() {

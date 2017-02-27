@@ -69,6 +69,16 @@ public class HeroDao extends MarvelDao{
 		if (resultSet.next()) {
 			hero = resultSetToHero(resultSet);
 		}
+		TeamDao tDao = new TeamDao();
+		MovieDao mDao = new MovieDao();
+
+		while (resultSet.next()) {
+			if (hero == null){
+				hero = resultSetToHero(resultSet);
+			}
+			hero.addTeam(tDao.resultSetToTeam(resultSet));
+			hero.addMovie(mDao.resultSetToMovie(resultSet));
+		}
 
 		connect.close();
 

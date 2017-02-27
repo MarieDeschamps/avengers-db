@@ -40,9 +40,17 @@ public class Team {
 	public void setHeroes(List<Hero> heroes) {
 		this.heroes = heroes;
 	}
+	
+	public void addHeroe(Hero hero) {
+		heroes.add(hero);
+	}
 
 	public List<Movie> getMovies() {
 		return movies;
+	}
+	
+	public void addMovie(Movie movie) {
+		movies.add(movie);
 	}
 
 	public void setMovies(List<Movie> movies) {
