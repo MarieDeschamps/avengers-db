@@ -15,8 +15,9 @@ public class HeroDao extends MarvelDao{
 	// DAO: direct access object
 
 	public Set<Hero> findAll() throws SQLException {
-		String query = "SELECT h.id AS hero_id, h.name AS alias, h.picture "
-				+ "FROM heroes h "
+		String query = "SELECT h.id AS hero_id, h.name AS alias,  h.picture heroPicture, h.abilities, irl.name AS realName "
+				+ "FROM heroes h " 
+				+ "LEFT JOIN `irl` irl ON h.id = irl.hero_id "
 				+ "ORDER BY h.name ASC";
 
 		Connection connect = connectToMySql();
@@ -36,24 +37,24 @@ public class HeroDao extends MarvelDao{
 		return heroes;
 	}
 
-	public Set<Hero> findHeroesByName(String term) throws SQLException {
-		String query = "SELECT h.name AS alias, h.id AS hero_id FROM heroes h WHERE h.name LIKE '%" + term + "%'";
-
-		Connection connect = connectToMySql();
-
-		Statement statement = connect.createStatement();
-		ResultSet resultSet = statement.executeQuery(query);
-
-		Set<Hero> heroes = new HashSet<>();
-
-		while (resultSet.next()) {
-			heroes.add(resultSetToHero(resultSet));
-		}
-
-		connect.close();
-
-		return heroes;
-	}
+//	public Set<Hero> findHeroesByName(String term) throws SQLException {
+//		String query = "SELECT h.name AS alias, h.id AS hero_id FROM heroes h WHERE h.name LIKE '%" + term + "%'";
+//
+//		Connection connect = connectToMySql();
+//
+//		Statement statement = connect.createStatement();
+//		ResultSet resultSet = statement.executeQuery(query);
+//
+//		Set<Hero> heroes = new HashSet<>();
+//
+//		while (resultSet.next()) {
+//			heroes.add(resultSetToHero(resultSet));
+//		}
+//
+//		connect.close();
+//
+//		return heroes;
+//	}
 
 	public Hero findHero(int characterID) throws SQLException {
 		String query = "SELECT h.id AS hero_id, h.name AS alias, irl.name as realName, h.abilities, h.picture AS heroPicture, "

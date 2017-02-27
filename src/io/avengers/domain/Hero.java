@@ -37,7 +37,7 @@ public class Hero {
 
 	@Override
 	public String toString() {
-		return this.alias + " (teams = "+ teams + " / movies = " + movies + " )";
+		return this.alias + " (teams = " + teams + " / movies = " + movies + " )";
 	}
 
 	public int getId() {
@@ -77,10 +77,13 @@ public class Hero {
 	}
 
 	public void addTeam(Team team) {
-		if (teams == null)
+		if (teams == null){
 			teams = new ArrayList<>();
-
-		this.teams.add(team);
+		}
+		if (team != null &&  !teams.contains(team)){
+			this.teams.add(team);
+			
+		}	
 	}
 
 	public List<Movie> getMovies() {
@@ -95,7 +98,9 @@ public class Hero {
 		if (movies == null) {
 			movies = new ArrayList<>();
 		}
-		movies.add(movie);
+		if (movie != null && !movies.contains(movie)){
+			movies.add(movie);
+		}
 	}
 
 	public byte[] getPicture() {
@@ -104,6 +109,34 @@ public class Hero {
 
 	public void setPicture(byte[] picture) {
 		this.picture = picture;
+	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((alias == null) ? 0 : alias.hashCode());
+		result = prime * result + id;
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Hero other = (Hero) obj;
+		if (alias == null) {
+			if (other.alias != null)
+				return false;
+		} else if (!alias.equals(other.alias))
+			return false;
+		if (id != other.id)
+			return false;
+		return true;
 	}
 
 }

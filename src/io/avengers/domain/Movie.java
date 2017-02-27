@@ -34,6 +34,32 @@ public class Movie {
 		this.picture = picture;
 		this.date = date;
 	}
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + movie_id;
+		result = prime * result + ((movie_title == null) ? 0 : movie_title.hashCode());
+		return result;
+	}
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Movie other = (Movie) obj;
+		if (movie_id != other.movie_id)
+			return false;
+		if (movie_title == null) {
+			if (other.movie_title != null)
+				return false;
+		} else if (!movie_title.equals(other.movie_title))
+			return false;
+		return true;
+	}
 	public int getMovie_id() {
 		return movie_id;
 	}
@@ -83,7 +109,7 @@ public class Movie {
 	
 	@Override
 	public String toString() {
-		return movie_title + "\r\n" + date;
+		return movie_title ;//+ "\r\n" + date;
 	}
 	
 }

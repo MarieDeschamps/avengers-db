@@ -9,6 +9,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import io.avengers.domain.Hero;
+
 public class HeroDaoTest {
 
 	HeroDao dao;
@@ -28,21 +30,21 @@ public class HeroDaoTest {
 	@Test
 	public void testFindAll() throws SQLException {
 		assertTrue(dao.findAll().size() >5 );
+		
+		Hero hulk = new Hero(3, "Hulk", "Bruce Banner", null, null, null, null);
+		assertTrue(dao.findAll().contains(hulk) );
 	}
 
 	@Test
-	public void testFindHeroesByName() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testFindHero() {
-		fail("Not yet implemented");
-	}
-
-	@Test
-	public void testResultSetToHero() {
-		fail("Not yet implemented");
+	public void testFindHero() throws SQLException {
+		int heroID = 2;
+		System.out.println(dao.findHero(heroID));
+		
+		assertTrue(dao.findHero(heroID).toString().contains("Iron"));
+		
+		assertFalse(dao.findHero(heroID).getTeams().contains(null));
+		assertFalse(dao.findHero(heroID).getMovies().contains(null));
+		
 	}
 
 }

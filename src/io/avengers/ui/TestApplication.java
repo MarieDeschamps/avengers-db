@@ -13,6 +13,9 @@ public class TestApplication {
 		MovieService service = new MovieService();
 		System.out.println(service.findMovie(1));
 		
+		HeroService heroservice = new HeroService();
+		System.out.println(heroservice.findHero(2));
+		
 	}
 
 }

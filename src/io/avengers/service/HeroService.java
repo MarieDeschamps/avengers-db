@@ -32,23 +32,23 @@ public class HeroService {
 		}
 	}
 
-	public Set<Hero> findHeroesByName(String term) {
-		
-		if(term== null){
-			System.out.println("Potential bug or illegal request");
-			return this.findAll();
-		}
-		
-		if(term.isEmpty()){
-			return this.findAll();
-		}
-		
-		try {
-			return new HeroDao().findHeroesByName(term);
-		} catch (SQLException e) {
-			e.printStackTrace();
-			throw stateException;
-		}
-
-	}
+//	public Set<Hero> findHeroesByName(String term) {
+//		
+//		if(term== null){
+//			System.out.println("Potential bug or illegal request");
+//			return this.findAll();
+//		}
+//		
+//		if(term.isEmpty()){
+//			return this.findAll();
+//		}
+//		
+//		try {
+//			return new HeroDao().findHeroesByName(term);
+//		} catch (SQLException e) {
+//			e.printStackTrace();
+//			throw stateException;
+//		}
+//
+//	}
 }
