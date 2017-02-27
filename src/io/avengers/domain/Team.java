@@ -51,6 +51,9 @@ public class Team {
 	}
 	
 	public void addHeroe(Hero hero) {
+		if(heroes == null){
+			heroes = new ArrayList<>();
+		}
 		heroes.add(hero);
 	}
 
@@ -59,6 +62,9 @@ public class Team {
 	}
 	
 	public void addMovie(Movie movie) {
+		if(movies == null){
+			movies = new ArrayList<>();
+		}
 		movies.add(movie);
 	}
 

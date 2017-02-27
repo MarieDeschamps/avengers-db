@@ -14,7 +14,7 @@ public class Hero {
 	List<Team> teams;
 	List<Movie> movies;
 	byte[] picture;
-	
+
 	public Hero(int id, String alias, String realName, String abilities, List<Team> teams, List<Movie> movies,
 			byte[] picture) {
 		super();
@@ -22,14 +22,14 @@ public class Hero {
 		this.alias = alias;
 		this.realName = realName;
 		this.abilities = abilities;
-		if(teams == null){
+		if (teams == null) {
 			teams = new ArrayList<>();
-		}else{
+		} else {
 			this.teams = teams;
 		}
-		if(movies == null){
+		if (movies == null) {
 			movies = new ArrayList<>();
-		}else{
+		} else {
 			this.movies = movies;
 		}
 		this.picture = picture;
@@ -37,7 +37,7 @@ public class Hero {
 
 	@Override
 	public String toString() {
-		return this.alias;
+		return this.alias + " (teams = "+ teams + " / movies = " + movies + " )";
 	}
 
 	public int getId() {
@@ -75,9 +75,12 @@ public class Hero {
 	public void setTeams(List<Team> teams) {
 		this.teams = teams;
 	}
-	
+
 	public void addTeam(Team team) {
-		teams.add(team);
+		if (teams == null)
+			teams = new ArrayList<>();
+
+		this.teams.add(team);
 	}
 
 	public List<Movie> getMovies() {
@@ -87,8 +90,11 @@ public class Hero {
 	public void setMovies(List<Movie> movies) {
 		this.movies = movies;
 	}
-	
+
 	public void addMovie(Movie movie) {
+		if (movies == null) {
+			movies = new ArrayList<>();
+		}
 		movies.add(movie);
 	}
 
@@ -99,7 +105,5 @@ public class Hero {
 	public void setPicture(byte[] picture) {
 		this.picture = picture;
 	}
-
-	
 
 }

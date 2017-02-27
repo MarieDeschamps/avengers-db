@@ -52,7 +52,9 @@ public class MovieDao extends MarvelDao {
 	}*/
 
 	public Movie findMovie(int movieID) throws SQLException {
-		String query = "SELECT m.id as movie_id, m.name as movie_title, m.date, m.picture, m.budget, m.history as synopsis, t.team_id, t.name as team_name, h.id, h.name as alias "
+		String query = "SELECT h.id AS hero_id, h.name AS alias, irl.name as realName, h.abilities, h.picture AS heroPicture, "
+				+ "t.name AS team_name, t. team_id, t.picture AS teamPicture, "
+				+ "m.name AS movie_title,  m.id AS movie_id, m.picture AS moviePicture, m.history AS synopsis, m.budget AS budget "
 				+ "FROM `movie` m "
 				+ "LEFT JOIN `movie_hero` mh ON m.id = mh.id_movie "
 				+ "LEFT JOIN heroes h ON h.id = mh.id_hero "
