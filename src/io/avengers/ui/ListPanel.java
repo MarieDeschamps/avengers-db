@@ -5,19 +5,23 @@ import javax.swing.BoxLayout;
 
 public class ListPanel extends JPanel {
 
+	PanelHeader panelHeader;
+	PanelTitleAlone panelTitle;
+	PanelContentList panelContentList;
+	
 	/**
 	 * Create the panel.
 	 */
 	public ListPanel() {
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
-		PanelHeader panelHeader = new PanelHeader();
+		panelHeader = new PanelHeader();
 		add(panelHeader);
 		
-		PanelTitleAlone panelTitle = new PanelTitleAlone();
+		panelTitle = new PanelTitleAlone();
 		add(panelTitle);
 		
-		PanelContentList panelContentList = new PanelContentList();
+		panelContentList = new PanelContentList();
 		add(panelContentList);
 
 	}

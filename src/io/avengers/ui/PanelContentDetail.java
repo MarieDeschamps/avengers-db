@@ -5,19 +5,22 @@ import javax.swing.BoxLayout;
 
 public class PanelContentDetail extends JPanel {
 
+	PanelInfo panelInfo;
+	PanelLink panelLink;
+	PanelLink panelLink_1;
 	/**
 	 * Create the panel.
 	 */
 	public PanelContentDetail() {
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
-		PanelInfo panelInfo = new PanelInfo();
+		panelInfo = new PanelInfo();
 		add(panelInfo);
 		
-		PanelLink panelLink = new PanelLink();
+		panelLink = new PanelLink();
 		add(panelLink);
 		
-		PanelLink panelLink_1 = new PanelLink();
+		panelLink_1 = new PanelLink();
 		add(panelLink_1);
 
 	}

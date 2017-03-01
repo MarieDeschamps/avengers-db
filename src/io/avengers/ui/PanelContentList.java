@@ -4,12 +4,13 @@ import javax.swing.JPanel;
 
 public class PanelContentList extends JPanel {
 
+	PanelElement panelElement;
 	/**
 	 * Create the panel.
 	 */
 	public PanelContentList() {
 		
-		PanelElement panelElement = new PanelElement();
+		panelElement = new PanelElement();
 		add(panelElement);
 
 	}
