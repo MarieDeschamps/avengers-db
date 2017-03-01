@@ -9,7 +9,7 @@ public class ListPanel extends JPanel {
 	 */
 	public ListPanel() {
 		
-		PanelTitle panelTitle = new PanelTitle();
+		PanelTitleAlone panelTitle = new PanelTitleAlone();
 		add(panelTitle);
 
 	}

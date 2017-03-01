@@ -3,7 +3,7 @@ package io.avengers.ui;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 
-public class PanelTitle extends JPanel {
+public class PanelTitlePicture extends JPanel {
 
 	String title;
 	byte[] picture;
@@ -12,7 +12,7 @@ public class PanelTitle extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public PanelTitle() {
+	public PanelTitlePicture() {
 		
 		jlabelTitle = new JLabel("New label");
 		add(jlabelTitle);
