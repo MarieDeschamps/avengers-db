@@ -1,7 +1,13 @@
 package io.avengers.ui;
 
 import javax.swing.JPanel;
+
+import io.avengers.service.HeroService;
+import io.avengers.ui.links.HeroLinks;
+
 import javax.swing.JLabel;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 public class PanelHeader extends JPanel {
 
@@ -17,6 +23,7 @@ public class PanelHeader extends JPanel {
 	 * Create the panel.
 	 */
 	public PanelHeader() {
+		HeroService hService = new HeroService();
 		
 		jlabelLogo = new JLabel("Logo");
 		add(jlabelLogo);
@@ -25,6 +32,12 @@ public class PanelHeader extends JPanel {
 		add(jlabelNews);
 		
 		jlabelCharacters = new JLabel("Characters");
+		jlabelCharacters.addMouseListener(new MouseAdapter() {
+			@Override
+			public void mouseClicked(MouseEvent e) {
+				HeroLinks.goToPageCharacterList();
+			}
+		});
 		add(jlabelCharacters);
 		
 		jlabelMovies = new JLabel("Movies");

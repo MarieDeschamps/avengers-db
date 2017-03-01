@@ -1,5 +1,7 @@
 package io.avengers.ui;
 
+import java.util.List;
+
 import javax.swing.JPanel;
 
 public class PanelContentList extends JPanel {
@@ -10,9 +12,12 @@ public class PanelContentList extends JPanel {
 	 */
 	public PanelContentList() {
 		
-		panelElement = new PanelElement();
-		add(panelElement);
-
+	}
+	
+	public void initComponent(List<PanelElement> elements){
+		for(PanelElement elem : elements){
+			add(elem);
+		}
 	}
 
 }

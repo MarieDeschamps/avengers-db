@@ -10,7 +10,7 @@ import javax.swing.border.EmptyBorder;
 public class MarvelFrame extends JFrame {
 
 	private JPanel contentPane;
-
+	private static MarvelFrame frame;
 	/**
 	 * Launch the application.
 	 */
@@ -18,8 +18,8 @@ public class MarvelFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					MarvelFrame frame = new MarvelFrame();
-					frame.setVisible(true);
+					 setFrame(new MarvelFrame());
+					getFrame().setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
 				}
@@ -37,6 +37,19 @@ public class MarvelFrame extends JFrame {
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
+		
+		ListPanel listPanel = new ListPanel();
+		contentPane.add(listPanel, BorderLayout.CENTER);
 	}
+
+	public static MarvelFrame getFrame() {
+		return frame;
+	}
+
+	public static void setFrame(MarvelFrame frame) {
+		MarvelFrame.frame = frame;
+	}
+	
+	
 
 }

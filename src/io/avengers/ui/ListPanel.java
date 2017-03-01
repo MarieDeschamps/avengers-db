@@ -26,4 +26,20 @@ public class ListPanel extends JPanel {
 
 	}
 
+	public PanelTitleAlone getPanelTitle() {
+		return panelTitle;
+	}
+
+	public void setPanelTitle(PanelTitleAlone panelTitle) {
+		this.panelTitle = panelTitle;
+	}
+
+	public PanelContentList getPanelContentList() {
+		return panelContentList;
+	}
+
+	public void setPanelContentList(PanelContentList panelContentList) {
+		this.panelContentList = panelContentList;
+	}
+
 }

@@ -31,7 +31,7 @@ public class HeroService {
 			throw stateException;
 		}
 	}
-
+	
 //	public Set<Hero> findHeroesByName(String term) {
 //		
 //		if(term== null){

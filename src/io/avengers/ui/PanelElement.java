@@ -3,6 +3,9 @@ package io.avengers.ui;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextPane;
+
+import io.avengers.adaptor.Detailable;
+
 import java.awt.FlowLayout;
 import java.awt.BorderLayout;
 import javax.swing.BoxLayout;
@@ -11,7 +14,8 @@ import java.awt.Component;
 public class PanelElement extends JPanel {
 	JLabel jlabelElementPicture;
 	JTextPane jtextpaneElementDescription;
-
+	int id;
+	Detailable type;
 	/**
 	 * Create the panel.
 	 */
@@ -27,6 +31,22 @@ public class PanelElement extends JPanel {
 
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+	public Detailable getType() {
+		return type;
+	}
+
+	public void setType(Detailable type) {
+		//TODO
+	}
+
 	public void setJlabelElementPicture(JLabel jlabelElementPicture) {
 		this.jlabelElementPicture = jlabelElementPicture;
 	}
@@ -40,5 +60,14 @@ public class PanelElement extends JPanel {
 	}
 	public JTextPane getJtextpaneElementDescription() {
 		return jtextpaneElementDescription;
+	}
+
+	public void setJlabelElementPicture(byte[] picture) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public void setJtextpaneElementDescription(String name) {
+		this.jtextpaneElementDescription.setText(name);
 	}
 }
