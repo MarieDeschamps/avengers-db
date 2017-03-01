@@ -18,13 +18,13 @@ public class MovieDaoTest {
 
 	MovieDao dao;
 	Connection connect;
-	int teamID;
+	int movieID;
 
 	@Before
 	public void setUp() throws Exception {
 		dao = new MovieDao();
 		connect = dao.connectToMySql();
-		teamID = 2;
+		movieID = 2;
 	}
 
 	@After
@@ -41,16 +41,16 @@ public class MovieDaoTest {
 	}
 
 	@Test
-	public void testFindHero1() throws SQLException {
-		System.out.println(dao.findMovie(teamID));
-		assertTrue(dao.findMovie(teamID).toString().contains("Civil"));
+	public void testFindMovie1() throws SQLException {
+		System.out.println(dao.findMovie(movieID));
+		assertTrue(dao.findMovie(movieID).toString().contains("Civil war"));
 	}
 	
-	@Ignore
 	@Test
-	public void testFindHero2() throws SQLException {
-		assertFalse(dao.findMovie(teamID).getHeroes().contains(null));
-		assertFalse(dao.findMovie(teamID).getTeams().contains(null));
+	public void testFindMovie2() throws SQLException {
+		System.out.println(dao.findMovie(movieID));
+		assertFalse(dao.findMovie(movieID).getHeroes().contains(null));
+		assertFalse(dao.findMovie(movieID).getTeams().contains(null));
 	}
 
 }

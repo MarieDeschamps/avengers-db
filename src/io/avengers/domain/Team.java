@@ -106,7 +106,7 @@ public class Team {
 
 	@Override
 	public String toString() {
-		return name;
+		return this.name + " (heroes = " + heroes + " / movies = " + movies + " )";
 	}
 	
 }

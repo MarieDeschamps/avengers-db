@@ -37,7 +37,7 @@ public class TeamDaoTest {
 	}
 
 	@Test
-	public void testFindHero() throws SQLException {
+	public void testFindTeam() throws SQLException {
 		int teamID = 2;
 		System.out.println(dao.findTeam(teamID));
 		

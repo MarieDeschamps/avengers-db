@@ -139,7 +139,7 @@ public class Movie {
 	
 	@Override
 	public String toString() {
-		return movie_title ;//+ "\r\n" + date;
+		return this.movie_title + " (heroes = " + heroes + " / teams = " + teams + " )";
 	}
 	
 }
