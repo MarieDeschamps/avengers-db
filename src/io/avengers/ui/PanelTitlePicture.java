@@ -14,11 +14,11 @@ public class PanelTitlePicture extends JPanel {
 	 */
 	public PanelTitlePicture() {
 		
-		jlabelTitle = new JLabel("New label");
-		add(jlabelTitle);
-		
-		jlabelPicture = new JLabel("New label");
+		jlabelPicture = new JLabel("Picture");
 		add(jlabelPicture);
+		
+		jlabelTitle = new JLabel("Title");
+		add(jlabelTitle);
 
 	}
 	public String getTitle() {

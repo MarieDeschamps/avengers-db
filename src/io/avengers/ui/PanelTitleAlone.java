@@ -12,7 +12,7 @@ public class PanelTitleAlone extends JPanel {
 	 */
 	public PanelTitleAlone() {
 		
-		jlabelTitle = new JLabel("New label");
+		jlabelTitle = new JLabel("Title");
 		add(jlabelTitle);
 
 	}
