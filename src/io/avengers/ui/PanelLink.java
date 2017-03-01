@@ -5,17 +5,31 @@ import javax.swing.JLabel;
 
 public class PanelLink extends JPanel {
 
+	JLabel jlabelTitle;
+	JLabel jlabelLink;
 	/**
 	 * Create the panel.
 	 */
 	public PanelLink() {
 		
-		JLabel jlabelTitle = new JLabel("Title");
+		jlabelTitle = new JLabel("Title");
 		add(jlabelTitle);
 		
-		JLabel jlabelLink = new JLabel("Link");
+		jlabelLink = new JLabel("Link");
 		add(jlabelLink);
 
+	}
+	public JLabel getJlabelTitle() {
+		return jlabelTitle;
+	}
+	public void setJlabelTitle(JLabel jlabelTitle) {
+		this.jlabelTitle = jlabelTitle;
+	}
+	public JLabel getJlabelLink() {
+		return jlabelLink;
+	}
+	public void setJlabelLink(JLabel jlabelLink) {
+		this.jlabelLink = jlabelLink;
 	}
 
 }

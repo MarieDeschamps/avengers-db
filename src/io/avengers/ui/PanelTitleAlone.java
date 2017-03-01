@@ -6,7 +6,7 @@ import javax.swing.JLabel;
 public class PanelTitleAlone extends JPanel {
 
 	String title;
-	private JLabel jlabelTitle;
+	JLabel jlabelTitle;
 	/**
 	 * Create the panel.
 	 */
@@ -16,6 +16,7 @@ public class PanelTitleAlone extends JPanel {
 		add(jlabelTitle);
 
 	}
+	
 	public String getTitle() {
 		return title;
 	}
@@ -27,5 +28,8 @@ public class PanelTitleAlone extends JPanel {
 
 	public JLabel getJlabelTitle() {
 		return jlabelTitle;
+	}
+	public void setJlabelTitle(JLabel jlabelTitle) {
+		this.jlabelTitle = jlabelTitle;
 	}
 }

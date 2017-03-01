@@ -7,8 +7,8 @@ public class PanelTitlePicture extends JPanel {
 
 	String title;
 	byte[] picture;
-	private JLabel jlabelTitle;
-	private JLabel jlabelPicture;
+	JLabel jlabelTitle;
+	JLabel jlabelPicture;
 	/**
 	 * Create the panel.
 	 */
@@ -37,6 +37,12 @@ public class PanelTitlePicture extends JPanel {
 	
 	
 
+	public void setJlabelTitle(JLabel jlabelTitle) {
+		this.jlabelTitle = jlabelTitle;
+	}
+	public void setJlabelPicture(JLabel jlabelPicture) {
+		this.jlabelPicture = jlabelPicture;
+	}
 	public JLabel getJlabelTitle() {
 		return jlabelTitle;
 	}

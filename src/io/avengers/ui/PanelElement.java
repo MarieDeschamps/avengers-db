@@ -9,6 +9,8 @@ import javax.swing.BoxLayout;
 import java.awt.Component;
 
 public class PanelElement extends JPanel {
+	JLabel jlabelElementPicture;
+	JTextPane jtextpaneElementDescription;
 
 	/**
 	 * Create the panel.
@@ -16,13 +18,27 @@ public class PanelElement extends JPanel {
 	public PanelElement() {
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
-		JLabel jlabelElementPicture = new JLabel("element picture");
+		jlabelElementPicture = new JLabel("element picture");
 		add(jlabelElementPicture);
 		
-		JTextPane jtextpaneElementDescription = new JTextPane();
+		jtextpaneElementDescription = new JTextPane();
 		jtextpaneElementDescription.setText("element description");
 		add(jtextpaneElementDescription);
 
 	}
 
+	public void setJlabelElementPicture(JLabel jlabelElementPicture) {
+		this.jlabelElementPicture = jlabelElementPicture;
+	}
+
+	public void setJtextpaneElementDescription(JTextPane jtextpaneElementDescription) {
+		this.jtextpaneElementDescription = jtextpaneElementDescription;
+	}
+
+	public JLabel getJlabelElementPicture() {
+		return jlabelElementPicture;
+	}
+	public JTextPane getJtextpaneElementDescription() {
+		return jtextpaneElementDescription;
+	}
 }
