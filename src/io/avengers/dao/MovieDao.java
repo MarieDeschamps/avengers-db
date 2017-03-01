@@ -13,7 +13,7 @@ import io.avengers.domain.Movie;
 public class MovieDao extends MarvelDao {
 
 	public Set<Movie> findAll() throws SQLException {
-		String query = "SELECT m.id AS movie_id, m.name as movie_title, m.date, m.picture FROM `movie` m";
+		String query = "SELECT m.id AS movie_id, m.name as movie_title, m.date, m.picture, m.budget, m.history AS synopsis FROM `movie` m";
 
 		Connection connect = connectToMySql();
 

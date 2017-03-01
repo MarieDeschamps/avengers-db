@@ -78,11 +78,13 @@ public class Team {
 		this.heroes = heroes;
 	}
 	
-	public void addHeroe(Hero hero) {
-		if(heroes == null){
+	public void addHeroe(Hero hero)  {
+		if (heroes == null) {
 			heroes = new ArrayList<>();
 		}
-		heroes.add(hero);
+		if (hero != null && !heroes.contains(hero)){
+			heroes.add(hero);
+		}
 	}
 
 	public List<Movie> getMovies() {
@@ -90,10 +92,12 @@ public class Team {
 	}
 	
 	public void addMovie(Movie movie) {
-		if(movies == null){
+		if (movies == null) {
 			movies = new ArrayList<>();
 		}
-		movies.add(movie);
+		if (movie != null && !movies.contains(movie)){
+			movies.add(movie);
+		}
 	}
 
 	public void setMovies(List<Movie> movies) {

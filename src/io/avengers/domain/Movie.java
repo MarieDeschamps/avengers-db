@@ -34,6 +34,7 @@ public class Movie {
 		this.picture = picture;
 		this.date = date;
 	}
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -88,12 +89,41 @@ public class Movie {
 	public void setHeroes(List<Hero> heroes) {
 		this.heroes = heroes;
 	}
+	
+	public void addHeroe(Hero hero)  {
+		if (heroes == null) {
+			heroes = new ArrayList<>();
+		}
+		if (hero != null && !heroes.contains(hero)){
+			heroes.add(hero);
+		}
+	}
+	
 	public List<Team> Team() {
 		return teams;
 	}
+	
+	public List<Team> getTeams() {
+		return teams;
+	}
+
+	public void setTeams(List<Team> teams) {
+		this.teams = teams;
+	}
+
 	public void setTeam(List<Team> teams) {
 		this.teams = teams;
 	}
+	
+	public void addTeam(Team team) {
+		if (teams == null){
+			teams = new ArrayList<>();
+		}
+		if (team != null &&  !teams.contains(team)){
+			this.teams.add(team);
+		}	
+	}
+	
 	public byte[] getPicture() {
 		return picture;
 	}
