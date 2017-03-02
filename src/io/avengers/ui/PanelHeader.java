@@ -3,15 +3,18 @@ package io.avengers.ui;
 import javax.swing.JPanel;
 
 import io.avengers.service.HeroService;
+import io.avengers.service.ImageService;
 import io.avengers.ui.links.HeroLinks;
 
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.FlowLayout;
 
 public class PanelHeader extends JPanel {
 
-	JLabel jlabelLogo;
+	static JLabel jlabelLogo;
 	JLabel jlabelNews;
 	JLabel jlabelCharacters;
 	JLabel jlabelMovies;
@@ -23,9 +26,13 @@ public class PanelHeader extends JPanel {
 	 * Create the panel.
 	 */
 	public PanelHeader() {
-		HeroService hService = new HeroService();
-		
-		jlabelLogo = new JLabel("Logo");
+		FlowLayout flowLayout = (FlowLayout) getLayout();
+		flowLayout.setVgap(10);
+//		HeroService hService = new HeroService();
+		if(jlabelLogo == null){
+			byte[] image = new ImageService().findLogo();
+			jlabelLogo = new JLabel( new ImageIcon(image));
+		}
 		add(jlabelLogo);
 		
 		jlabelNews = new JLabel("News");
@@ -59,7 +66,7 @@ public class PanelHeader extends JPanel {
 	}
 
 	public void setJlabelLogo(JLabel jlabelLogo) {
-		this.jlabelLogo = jlabelLogo;
+		PanelHeader.jlabelLogo = jlabelLogo;
 	}
 
 	public JLabel getJlabelNews() {

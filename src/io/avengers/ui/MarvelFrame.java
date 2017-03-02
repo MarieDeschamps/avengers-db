@@ -3,9 +3,13 @@ package io.avengers.ui;
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import io.avengers.service.ImageService;
 
 public class MarvelFrame extends JFrame {
 
@@ -49,7 +53,5 @@ public class MarvelFrame extends JFrame {
 	public static void setFrame(MarvelFrame frame) {
 		MarvelFrame.frame = frame;
 	}
-	
-	
 
 }

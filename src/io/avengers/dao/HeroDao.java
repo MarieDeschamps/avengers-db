@@ -107,7 +107,7 @@ public class HeroDao extends MarvelDao{
 			byte[] picture = resultSet.getBytes("heroPicture");
 			// pour differencier avec l'enum
 
-			Hero h = new Hero(id, alias, realName, abilities, null, null, null);
+			Hero h = new Hero(id, alias, realName, abilities, null, null, picture);
 			return h;
 		} catch (SQLException e) {
 			e.printStackTrace();
