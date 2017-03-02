@@ -4,7 +4,7 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Movie {
+public class Movie implements Comparable<Movie>{
 
 	int movie_id;
 	String movie_title;
@@ -140,6 +140,16 @@ public class Movie {
 	@Override
 	public String toString() {
 		return this.movie_title + " (heroes = " + heroes + " / teams = " + teams + " )";
+	}
+
+	@Override
+	public int compareTo(Movie o) {
+		if (this == o)
+			return 0;
+		if (o == null)
+			return -1;
+		
+		return this.movie_title.compareTo(o.movie_title);
 	}
 	
 }

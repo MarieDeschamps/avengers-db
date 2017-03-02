@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.HashSet;
+import java.util.TreeSet;
 import java.util.Set;
 
 import io.avengers.domain.Team;
@@ -21,7 +21,7 @@ public class TeamDao extends MarvelDao {
 		Statement statement = connect.createStatement();
 		ResultSet resultSet = statement.executeQuery(query);
 
-		Set<Team> teams = new HashSet<>();
+		Set<Team> teams = new TreeSet<>();
 
 		while (resultSet.next()) {
 

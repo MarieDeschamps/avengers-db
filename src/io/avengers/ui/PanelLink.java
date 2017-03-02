@@ -1,12 +1,15 @@
 package io.avengers.ui;
 
 import javax.swing.JPanel;
+
+import java.util.List;
+
 import javax.swing.JLabel;
 
 public class PanelLink extends JPanel {
 
 	JLabel jlabelTitle;
-	JLabel jlabelLink;
+	PanelLinkName panelLinkName;
 	/**
 	 * Create the panel.
 	 */
@@ -15,8 +18,8 @@ public class PanelLink extends JPanel {
 		jlabelTitle = new JLabel("Title");
 		add(jlabelTitle);
 		
-		jlabelLink = new JLabel("Link");
-		add(jlabelLink);
+		PanelLinkName panelLinkName = new PanelLinkName();
+		add(panelLinkName);
 
 	}
 	public JLabel getJlabelTitle() {
@@ -25,11 +28,14 @@ public class PanelLink extends JPanel {
 	public void setJlabelTitle(JLabel jlabelTitle) {
 		this.jlabelTitle = jlabelTitle;
 	}
-	public JLabel getJlabelLink() {
-		return jlabelLink;
+	
+	public PanelLinkName getPanelLinkName() {
+		return panelLinkName;
 	}
-	public void setJlabelLink(JLabel jlabelLink) {
-		this.jlabelLink = jlabelLink;
+	public void initComponent(List<PanelLinkName> elements){
+		for(PanelLinkName elem : elements){
+			add(elem);
+		}
 	}
 
 }

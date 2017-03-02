@@ -24,5 +24,21 @@ public class PanelContentDetail extends JPanel {
 		add(panelLink_1);
 
 	}
+	public PanelInfo getPanelInfo() {
+		return panelInfo;
+	}
+
+	public PanelLink getPanelLink() {
+		return panelLink;
+	}
+	public void setPanelLink(PanelLink panelLink) {
+		this.panelLink = panelLink;
+	}
+	public PanelLink getPanelLink_1() {
+		return panelLink_1;
+	}
+	public void setPanelLink_1(PanelLink panelLink_1) {
+		this.panelLink_1 = panelLink_1;
+	}
 
 }

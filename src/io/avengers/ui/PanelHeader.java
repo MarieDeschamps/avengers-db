@@ -10,7 +10,13 @@ import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
+import javax.swing.SwingConstants;
+import java.awt.Font;
+import java.awt.Color;
+import java.awt.SystemColor;
+import javax.swing.border.LineBorder;
 
 public class PanelHeader extends JPanel {
 
@@ -26,7 +32,10 @@ public class PanelHeader extends JPanel {
 	 * Create the panel.
 	 */
 	public PanelHeader() {
+		
 		FlowLayout flowLayout = (FlowLayout) getLayout();
+		flowLayout.setHgap(0);
+		flowLayout.setAlignment(FlowLayout.LEFT);
 		flowLayout.setVgap(10);
 //		HeroService hService = new HeroService();
 		if(jlabelLogo == null){
@@ -36,9 +45,11 @@ public class PanelHeader extends JPanel {
 		add(jlabelLogo);
 		
 		jlabelNews = new JLabel("News");
+		setMenu(jlabelNews);
 		add(jlabelNews);
 		
 		jlabelCharacters = new JLabel("Characters");
+		setMenu(jlabelCharacters);
 		jlabelCharacters.addMouseListener(new MouseAdapter() {
 			@Override
 			public void mouseClicked(MouseEvent e) {
@@ -48,15 +59,19 @@ public class PanelHeader extends JPanel {
 		add(jlabelCharacters);
 		
 		jlabelMovies = new JLabel("Movies");
+		setMenu(jlabelMovies);
 		add(jlabelMovies);
 		
 		jlabelComics = new JLabel("Comics");
+		setMenu(jlabelComics);
 		add(jlabelComics);
 		
 		jlabelTeams = new JLabel("Teams");
+		setMenu(jlabelTeams);
 		add(jlabelTeams);
 		
 		jlabelShop = new JLabel("Shop");
+		setMenu(jlabelShop);
 		add(jlabelShop);
 
 	}
@@ -115,6 +130,17 @@ public class PanelHeader extends JPanel {
 
 	public void setJlabelShop(JLabel jlabelShop) {
 		this.jlabelShop = jlabelShop;
+	}
+	
+	public void setMenu(JLabel label){
+		label.setBackground(SystemColor.controlHighlight);
+		label.setOpaque(true);
+		label.setForeground(new Color(204, 0, 0));
+		label.setFont(new Font("Raleway", Font.BOLD, 14));
+		label.setHorizontalAlignment(SwingConstants.CENTER);
+		label.setSize(new Dimension(140, 50));
+		label.setPreferredSize(new Dimension(140, 50));
+		label.setBorder(new LineBorder(new Color(0, 0, 0)));
 	}
 
 

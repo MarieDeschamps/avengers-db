@@ -3,7 +3,7 @@ package io.avengers.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Team {
+public class Team  implements Comparable<Team>{
 	int id;
 	String name;
 	byte[] picture;
@@ -104,9 +104,27 @@ public class Team {
 		this.movies = movies;
 	}
 
+	public int getId() {
+		return id;
+	}
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
 	@Override
 	public String toString() {
 		return this.name + " (heroes = " + heroes + " / movies = " + movies + " )";
+	}
+
+	@Override
+	public int compareTo(Team o) {
+		if (this == o)
+			return 0;
+		if (o == null)
+			return -1;
+		
+		return this.name.compareTo(o.name);
 	}
 	
 }

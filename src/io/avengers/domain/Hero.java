@@ -3,7 +3,7 @@ package io.avengers.domain;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Hero {
+public class Hero implements Comparable<Hero>{
 	int id;
 	String alias;
 	String realName;
@@ -20,8 +20,16 @@ public class Hero {
 		super();
 		this.id = id;
 		this.alias = alias;
-		this.realName = realName;
-		this.abilities = abilities;
+		if(realName == null){
+			this.realName = "";
+		}else{
+			this.realName = realName;
+		}
+		if(abilities == null){
+			this.abilities = "";
+		}else{
+			this.abilities = abilities;
+		}
 		if (teams == null) {
 			teams = new ArrayList<>();
 		} else {
@@ -137,6 +145,16 @@ public class Hero {
 		if (id != other.id)
 			return false;
 		return true;
+	}
+
+	@Override
+	public int compareTo(Hero o) {
+		if (this == o)
+			return 0;
+		if (o == null)
+			return -1;
+		
+		return this.alias.compareTo(o.alias);
 	}
 
 }

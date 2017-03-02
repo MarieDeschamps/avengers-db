@@ -4,7 +4,7 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.HashSet;
+import java.util.TreeSet;
 import java.util.Set;
 
 import io.avengers.domain.Hero;
@@ -25,7 +25,7 @@ public class HeroDao extends MarvelDao{
 		Statement statement = connect.createStatement();
 		ResultSet resultSet = statement.executeQuery(query);
 
-		Set<Hero> heroes = new HashSet<>();
+		Set<Hero> heroes = new TreeSet<>();
 
 		while (resultSet.next()) {
 
@@ -45,7 +45,7 @@ public class HeroDao extends MarvelDao{
 //		Statement statement = connect.createStatement();
 //		ResultSet resultSet = statement.executeQuery(query);
 //
-//		Set<Hero> heroes = new HashSet<>();
+//		Set<Hero> heroes = new TreeSet<>();
 //
 //		while (resultSet.next()) {
 //			heroes.add(resultSetToHero(resultSet));

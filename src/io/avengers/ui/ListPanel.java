@@ -24,7 +24,8 @@ public class ListPanel extends JPanel {
 		add(panelHeader);
 		
 		panelTitle = new PanelTitleAlone();
-		panelTitle.setMaximumSize(new Dimension(10000, 50));
+		panelTitle.setMaximumSize(new Dimension(10000, 150));
+		panelTitle.setPreferredSize(new Dimension(10000, 150));
 		add(panelTitle);
 		
 		panelContentList = new PanelContentList();

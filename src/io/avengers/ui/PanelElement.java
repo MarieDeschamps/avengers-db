@@ -3,6 +3,10 @@ package io.avengers.ui;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.JTextPane;
+import javax.swing.text.MutableAttributeSet;
+import javax.swing.text.SimpleAttributeSet;
+import javax.swing.text.StyleConstants;
+import javax.swing.text.StyledDocument;
 
 import io.avengers.adaptor.Detailable;
 
@@ -25,11 +29,16 @@ public class PanelElement extends JPanel {
 	public PanelElement() {
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
-		jlabelElementPicture = new JLabel("element picture");
+		jlabelElementPicture = new JLabel("Picture not available");
+		jlabelElementPicture.setAlignmentX(Component.CENTER_ALIGNMENT);
 		add(jlabelElementPicture);
 
 		jtextpaneElementDescription = new JTextPane();
 		jtextpaneElementDescription.setText("element description");
+		StyledDocument doc = jtextpaneElementDescription.getStyledDocument();		
+		MutableAttributeSet center = new SimpleAttributeSet();		
+		StyleConstants.setAlignment(center, StyleConstants.ALIGN_CENTER);
+		doc.setParagraphAttributes(0, 0, center, true);
 		add(jtextpaneElementDescription);
 
 	}
@@ -50,14 +59,6 @@ public class PanelElement extends JPanel {
 		// TODO
 	}
 
-	public void setJlabelElementPicture(JLabel jlabelElementPicture) {
-		this.jlabelElementPicture = jlabelElementPicture;
-	}
-
-	public void setJtextpaneElementDescription(JTextPane jtextpaneElementDescription) {
-		this.jtextpaneElementDescription = jtextpaneElementDescription;
-	}
-
 	public JLabel getJlabelElementPicture() {
 		return jlabelElementPicture;
 	}
@@ -68,8 +69,8 @@ public class PanelElement extends JPanel {
 
 	public void setJlabelElementPicture(byte[] image) {
 		if (image != null && image.length > 0) {
-			JLabel picture = new JLabel(new ImageIcon(image));
-			this.setJlabelElementPicture(picture);
+			jlabelElementPicture.setText("");
+			jlabelElementPicture.setIcon(new ImageIcon(image));
 		}
 	}
 

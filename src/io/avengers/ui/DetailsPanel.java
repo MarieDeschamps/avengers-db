@@ -6,7 +6,7 @@ import javax.swing.BoxLayout;
 import java.awt.Dimension;
 import java.awt.FlowLayout;
 
-public class DetailsPane extends JPanel {
+public class DetailsPanel extends JPanel {
 
 	PanelHeader panelHeader;
 	PanelTitlePicture panelTitlePicture;
@@ -14,7 +14,7 @@ public class DetailsPane extends JPanel {
 	/**
 	 * Create the panel.
 	 */
-	public DetailsPane() {
+	public DetailsPanel() {
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
 		panelHeader = new PanelHeader();
@@ -30,5 +30,25 @@ public class DetailsPane extends JPanel {
 		add(panelContentDetail);
 
 	}
+	public PanelHeader getPanelHeader() {
+		return panelHeader;
+	}
+	public void setPanelHeader(PanelHeader panelHeader) {
+		this.panelHeader = panelHeader;
+	}
+	public PanelTitlePicture getPanelTitlePicture() {
+		return panelTitlePicture;
+	}
+	public void setPanelTitlePicture(PanelTitlePicture panelTitlePicture) {
+		this.panelTitlePicture = panelTitlePicture;
+	}
+	public PanelContentDetail getPanelContentDetail() {
+		return panelContentDetail;
+	}
+	public void setPanelContentDetail(PanelContentDetail panelContentDetail) {
+		this.panelContentDetail = panelContentDetail;
+	}
+	
+	
 
 }

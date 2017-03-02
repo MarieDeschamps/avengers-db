@@ -1,15 +1,13 @@
 package io.avengers.ui;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.EventQueue;
 
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
-
-import io.avengers.service.ImageService;
 
 public class MarvelFrame extends JFrame {
 
@@ -22,7 +20,8 @@ public class MarvelFrame extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					 setFrame(new MarvelFrame());
+					frame = new MarvelFrame();
+					 frame.setSize(new Dimension(1000, 1000));
 					getFrame().setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -40,10 +39,12 @@ public class MarvelFrame extends JFrame {
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		contentPane.setLayout(new BorderLayout(0, 0));
+		contentPane.setBackground(Color.WHITE);
+		contentPane.setOpaque(true);
 		setContentPane(contentPane);
 		
 		ListPanel listPanel = new ListPanel();
-		contentPane.add(listPanel, BorderLayout.CENTER);
+		contentPane.add(listPanel);
 	}
 
 	public static MarvelFrame getFrame() {
@@ -53,5 +54,7 @@ public class MarvelFrame extends JFrame {
 	public static void setFrame(MarvelFrame frame) {
 		MarvelFrame.frame = frame;
 	}
+	
+	
 
 }
