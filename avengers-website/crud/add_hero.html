@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8" content="text/html" />
+    <link rel="stylesheet" href="../styles/tables.css" />
+    <link rel="stylesheet" href="../styles/design.css" />
+    <link rel="stylesheet" href="../styles/menu.css" />
+	<title>Marvel - Home</title>
+</head>
+
+<body>
+	<header>
+	<div>Marvel Website - &copy;2017</div>
+	<table class="table_menu">
+		<tr>
+			<td><a href="../index.html" target="_blank"><img src="../images/Marvel-logo.png" alt="Marvel Logo" height="50px" /></a></td>
+			<td class="menu menu_selected">
+				<a href="../index.html" class="menu_text">Home</a>
+			</td>
+			<td class="menu">
+			<a href="../CharacterList.html" class="menu_text">Character</a>
+			</td>
+			<td class="menu"><a href="../TeamList.html" class="menu_text">Team</a></td>
+			<td class="menu"><a href="../MovieList.html" class="menu_text">Movie</a></td>
+			<td class="menu"><a href="../ComicsList.html" class="menu_text">Comics</a></td>
+			<td class="menu"><a href="../Shop.html" class="menu_text">Shop</a></td>
+		</tr>
+	</table>
+	</header>
+	<h1>CREATE A NEW HERO</h1>
+	
+	<form action="add_hero.html" method="post" enctype="multipart/form-data">
+	<label>Hero name: <input type="text" name="alias" placeholder="hero name" required="required"></label><br/>
+	<label>Upload picture: <input type="file" name="picture" placeholder="Picture"></label><br/>
+	<fieldset><legend>Popularity</legend>
+		<label>Likes: <input type="number" name="likes" value="0"></label><br/>
+	<label>Dislikes: <input type="number" name="dislikes" value="0"></label>
+	</fieldset>
+	<label for="important">VIP</label><input type="checkbox" name="important" id="important" value="yes"><br/>
+	<label>Team: 
+		<select name ="team">
+			<option selected="selected" value="-1">None</option>
+			<option value="1">Avengers</option>
+			<option value="2">X-men</option>
+		</select>
+	</label><br/>
+	<button type="reset">Reset</button>
+	<input type="submit" value="Create a new hero"> <!--revient au même que button, mais moins bien-->
+	</form>
+
+
+
+	<footer>Built by Avengers Team !</footer>
+</body>
+
+
+
+</html>

@@ -1,0 +1,98 @@
+/* Pour le menu !!!!!!! */
+header{
+	position: fixed;
+	top: 0;
+	left:0;
+	margin: 0px;
+	padding: 0px;
+	width: 100%;
+	height: 50px;
+}
+
+ nav ul{
+	display: flex;
+	flex-direction: row;
+	align-items: stretch;
+	align-content: stretch;
+	list-style-type: none;
+	margin: 0px;
+	padding: 0px;
+}
+
+nav{
+	border: solid 2px #E61610;
+}
+
+
+nav li{
+	flex: 1;
+	height: 100%;
+	background-color: white;
+}
+
+nav li#logo{
+	flex: 0;
+	width: 100%;
+	height: 50px;
+}
+
+nav li a{
+	display : inline-block;
+	width:100%;
+	height: 50px;
+	line-height: 50px;
+	vertical-align: middle;
+	padding: auto;
+	margin: 0px;
+	position        : relative;
+	color: #E61610;
+	font-family: Raleway;
+	font-size: 1.5em;
+	text-align: center;
+	text-decoration: none;
+	font-weight: bold;
+}
+
+nav li.menu a:hover{
+	background-color: black;
+	color: #E61610;
+	border-left: solid 2px #E61610;
+	border-right: solid 2px #E61610;
+}
+
+nav li.menu a:after {
+	display  : block;
+	content  : '';
+	position : absolute;
+	top  : 100%;
+	left: 50%;
+	border-style : solid;
+	border-color : transparent;
+	border-width : 10px 14px 0 14px;
+	margin-left: -14px;
+}
+
+nav li.menu:hover a:after {
+	border-color : #E61610 transparent transparent transparent;
+}
+
+nav li.selected a{
+	background-color: #9E9E9E;
+	color: #E61610;
+	border-left: solid 2px #E61610;
+	border-right: solid 2px #E61610;
+}
+
+nav li.selected a:after{
+	display  : block;
+	content  : '';
+	position : absolute;
+	top  : 100%;
+	left: 50%;
+	border-style : solid;
+	border-color : transparent;
+	border-width : 10px 14px 0 14px;
+	margin-left: -14px;
+	border-color : #E61610 transparent transparent transparent;
+}
+
