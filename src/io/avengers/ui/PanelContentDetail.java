@@ -1,6 +1,9 @@
 package io.avengers.ui;
 
 import javax.swing.JPanel;
+
+import java.awt.Dimension;
+
 import javax.swing.BoxLayout;
 
 public class PanelContentDetail extends JPanel {
@@ -15,12 +18,15 @@ public class PanelContentDetail extends JPanel {
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		
 		panelInfo = new PanelInfo();
+		panelInfo.setPreferredSize(new Dimension(10000, 400));
 		add(panelInfo);
 		
 		panelLink = new PanelLink();
+		panelLink.setPreferredSize(new Dimension(10000, 150));
 		add(panelLink);
 		
 		panelLink_1 = new PanelLink();
+		panelLink_1.setPreferredSize(new Dimension(10000, 150));
 		add(panelLink_1);
 
 	}

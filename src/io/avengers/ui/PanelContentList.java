@@ -23,6 +23,7 @@ public class PanelContentList extends JPanel {
 			elem.addMouseListener(new MouseAdapter() {
 				@Override
 				public void mouseClicked(MouseEvent e) {
+					
 					HeroLinks.goToPageCharacterDetails(elem.getId());
 				}
 			});

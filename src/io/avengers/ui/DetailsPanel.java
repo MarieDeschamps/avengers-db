@@ -23,7 +23,8 @@ public class DetailsPanel extends JPanel {
 		panelHeader.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		panelTitlePicture = new PanelTitlePicture();
-		panelTitlePicture.setMaximumSize(new Dimension(10000, 100));
+		panelTitlePicture.setPreferredSize(new Dimension(10000, 200));
+		panelTitlePicture.setMaximumSize(new Dimension(10000, 200));
 		add(panelTitlePicture);
 		
 		panelContentDetail = new PanelContentDetail();

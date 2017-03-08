@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Set;
 
 import javax.swing.JLabel;
+import javax.swing.SwingUtilities;
 
 import io.avengers.domain.Hero;
 import io.avengers.domain.Movie;
@@ -84,6 +85,20 @@ public class HeroLinks {
 			panel.getPanelContentDetail().getPanelLink_1().initComponent(links2);
 		}
 
-		MarvelFrame.getFrame().setContentPane(panel);
+		SwingUtilities.invokeLater(new Runnable() {
+			
+			@Override
+			public void run() {
+				MarvelFrame.getFrame().setContentPane(panel);
+				MarvelFrame.getFrame().getContentPane().revalidate();
+				MarvelFrame.getFrame().getContentPane().repaint();
+				
+			}
+		});
+		
+	}
+	
+	public void goToDetails(){
+		
 	}
 }
