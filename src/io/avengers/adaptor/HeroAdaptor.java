@@ -15,7 +15,6 @@ public class HeroAdaptor extends Hero implements Detailable{
 
 	@Override
 	public void getPanel() {
-		// TODO Auto-generated method stub
 	}
 
 }

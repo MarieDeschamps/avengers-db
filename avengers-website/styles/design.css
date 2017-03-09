@@ -5,7 +5,7 @@
 footer{
 	margin-top: 50px;
 	border-top: solid 1px black;
-	padding-top: 10px;
+	padding: 10px 5px;
 }
 
 body{
@@ -62,8 +62,10 @@ h1{
 }
 
 .error_message{
-	font-size: 50px; /*=*/
-	text-align: center;
+	font-size: 25px; /*=*/
+	text-align: left;
+	color: red;
+	margin: 10px;
 }
 
 /* Pour les listings*/

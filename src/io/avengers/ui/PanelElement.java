@@ -56,7 +56,6 @@ public class PanelElement extends JPanel {
 	}
 
 	public void setType(Detailable type) {
-		// TODO
 	}
 
 	public JLabel getJlabelElementPicture() {

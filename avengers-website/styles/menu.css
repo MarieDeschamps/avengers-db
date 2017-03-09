@@ -61,7 +61,7 @@ nav li.menu a:hover{
 	border-right: solid 2px #E61610;
 }
 
-nav li.menu a:after {
+/*nav li.menu a:after {
 	display  : block;
 	content  : '';
 	position : absolute;
@@ -71,15 +71,15 @@ nav li.menu a:after {
 	border-color : transparent;
 	border-width : 10px 14px 0 14px;
 	margin-left: -14px;
-}
+}*/
 
 nav li.menu:hover a:after {
 	border-color : #E61610 transparent transparent transparent;
 }
 
 nav li.selected a{
-	background-color: #9E9E9E;
-	color: #E61610;
+	background-color: #E61610;
+	color: #FFFFFF;
 	border-left: solid 2px #E61610;
 	border-right: solid 2px #E61610;
 }
