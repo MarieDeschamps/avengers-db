@@ -1,6 +1,7 @@
 package io.avengers.domain;
 
 import java.util.ArrayList;
+import java.util.Base64;
 import java.util.List;
 
 public class Hero implements Comparable<Hero>{
@@ -113,6 +114,12 @@ public class Hero implements Comparable<Hero>{
 
 	public byte[] getPicture() {
 		return picture;
+	}
+	
+	public String getPictureString(){
+		byte[] encodedImage=Base64.getEncoder().encode(picture);
+		String pict = "data:image/jpeg;base64," + new String(encodedImage);
+		return pict;
 	}
 
 	public void setPicture(byte[] picture) {
