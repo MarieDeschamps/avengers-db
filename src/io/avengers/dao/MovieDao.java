@@ -8,6 +8,7 @@ import java.sql.Statement;
 import java.util.TreeSet;
 import java.util.Set;
 
+import io.avengers.domain.Hero;
 import io.avengers.domain.Movie;
 
 public class MovieDao extends MarvelDao {
@@ -132,6 +133,22 @@ public class MovieDao extends MarvelDao {
 			throw new IllegalStateException("Database has been compromised: "+e.getMessage());
 		}
 		finally{
+			connect.close();
+		}
+	}
+	
+	public void linkMovieToHero(Movie movie, Hero hero) throws SQLException {
+		String query = "INSERT INTO `movie_hero` (`id_movie`,`id_hero`) VALUES (?,?);";
+
+		Connection connect = connectToMySql();
+
+		try {
+			PreparedStatement ps = connect.prepareStatement(query);
+			ps.setInt(1, movie.getMovie_id());
+			ps.setInt(2, hero.getId());
+			ps.execute();
+		} finally {
+
 			connect.close();
 		}
 	}

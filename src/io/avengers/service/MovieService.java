@@ -3,7 +3,6 @@ package io.avengers.service;
 import java.sql.SQLException;
 import java.util.Set;
 
-import io.avengers.dao.HeroDao;
 import io.avengers.dao.MovieDao;
 import io.avengers.domain.Hero;
 import io.avengers.domain.Movie;
@@ -41,6 +40,19 @@ public class MovieService {
 		
 		try {
 			new MovieDao().createMovie(movie);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw stateException;
+		}
+	}
+	
+	public void linkMovieToHero(Movie movie, Hero hero){
+		if(movie==null || hero==null){
+			throw new IllegalStateException("The link cannot be created");
+		}
+		
+		try {
+			new MovieDao().linkMovieToHero(movie, hero);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw stateException;
