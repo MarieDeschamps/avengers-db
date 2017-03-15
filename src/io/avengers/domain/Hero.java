@@ -16,6 +16,10 @@ public class Hero implements Comparable<Hero>{
 	List<Movie> movies;
 	byte[] picture;
 
+	public Hero(){
+		super();
+	}
+	
 	public Hero(int id, String alias, String realName, String abilities, List<Team> teams, List<Movie> movies,
 			byte[] picture) {
 		super();

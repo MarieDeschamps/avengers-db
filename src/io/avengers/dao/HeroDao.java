@@ -1,10 +1,12 @@
 package io.avengers.dao;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.TreeSet;
+
 import java.util.Set;
 
 import io.avengers.domain.Hero;
@@ -112,6 +114,51 @@ public class HeroDao extends MarvelDao{
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new IllegalStateException("Database has been compromised: " + e.getMessage());
+		}
+	}
+	
+	public void createHero(Hero hero) throws SQLException{
+		Connection connect = null;
+		try{
+		connect = connectToMySql();
+		connect.setAutoCommit(false);
+		
+		String query1 = "INSERT INTO `heroes` "
+				+ "(`name`, `picture`, `abilities`) "
+				+ "VALUES (?, null, ?);"; //TODO add the picture query
+		
+		PreparedStatement ps1 = connect.prepareStatement(query1, Statement.RETURN_GENERATED_KEYS);
+        ps1.setString(1, hero.getAlias() );
+        ps1.setString(2, hero.getAbilities());
+        ps1.execute();
+		
+        ResultSet rs = ps1.getGeneratedKeys();
+        int resultId = -1;
+        if(rs.next()){
+        	resultId = rs.getInt(1);
+        }
+		 
+		if(resultId<=0){
+			connect.rollback();
+			throw new IllegalStateException("hero not created in database !");
+		}
+		
+		if(hero.getRealName()!=null && !hero.getRealName().isEmpty()){
+			String query2 = "INSERT INTO `irl` (`hero_id`, `name`) VALUES (?, ?);";
+			
+			PreparedStatement ps2 = connect.prepareStatement(query2);
+	        ps2.setInt(1, resultId );
+	        ps2.setString(2, hero.getRealName());
+	        ps2.execute();
+		}
+		
+		connect.commit();
+		}catch (Exception e) {
+			connect.rollback();
+			throw new IllegalStateException("Database has been compromised: "+e.getMessage());
+		}
+		finally{
+			connect.close();
 		}
 	}
 
