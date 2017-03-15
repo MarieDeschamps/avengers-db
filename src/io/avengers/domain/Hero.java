@@ -4,6 +4,9 @@ import java.util.ArrayList;
 import java.util.Base64;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Hero implements Comparable<Hero>{
 	int id;
 	String alias;
