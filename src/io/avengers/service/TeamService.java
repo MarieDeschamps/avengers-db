@@ -3,6 +3,7 @@ package io.avengers.service;
 import java.sql.SQLException;
 import java.util.Set;
 
+import io.avengers.dao.HeroDao;
 import io.avengers.dao.MovieDao;
 import io.avengers.dao.TeamDao;
 import io.avengers.domain.Hero;
@@ -59,6 +60,20 @@ IllegalStateException stateException = new IllegalStateException("Connection imp
 		
 		try {
 			new TeamDao().linkTeamToHero(team, hero);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw stateException;
+		}
+	}
+	
+	public void deleteTeam(Team team) {
+		if (team == null) {
+			throw new IllegalStateException("The team cannot be deleted");
+		}
+
+		try {
+			new TeamDao().deleteTeam(team);
+
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw stateException;

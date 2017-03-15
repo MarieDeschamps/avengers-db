@@ -131,5 +131,32 @@ public class TeamDao extends MarvelDao {
 			connect.close();
 		}
 	}
+	
+	public void deleteTeam(Team team) throws SQLException {
+		Connection connect = connectToMySql();
+		try {
+			connect.setAutoCommit(false);
+
+			String queryHero = "DELETE FROM `team_hero` WHERE `team_hero`.`team_id` = ?;";
+
+			PreparedStatement psHero = connect.prepareStatement(queryHero);
+			psHero.setInt(1, team.getId());
+			psHero.execute();
+
+			String queryTeam = "DELETE FROM `team` WHERE `team`.`team_id` = ?;";
+
+			PreparedStatement psTeam = connect.prepareStatement(queryTeam);
+			psTeam.setInt(1, team.getId());
+			psTeam.execute();
+			
+
+			connect.commit();
+		} catch (Exception e) {
+			connect.rollback();
+			throw new IllegalStateException("Team not deleted!! " + e.getMessage());
+		} finally {
+			connect.close();
+		}
+	}
 
 }
