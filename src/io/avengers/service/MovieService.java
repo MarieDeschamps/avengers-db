@@ -51,6 +51,20 @@ public class MovieService {
 			throw stateException;
 		}
 	}
+	
+	public void deleteMovie(Movie movie) {
+		if (movie == null) {
+			throw new IllegalStateException("The movie cannot be deleted");
+		}
+
+		try {
+			new MovieDao().deleteMovie(movie);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw stateException;
+		}
+	}
 
 	public void linkMovieToHero(Movie movie, Hero hero) {
 		if (movie == null || hero == null) {

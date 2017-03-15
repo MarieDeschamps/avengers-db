@@ -141,6 +141,32 @@ public class MovieDao extends MarvelDao {
 			connect.close();
 		}
 	}
+	
+	public void deleteMovie(Movie movie) throws SQLException {
+		Connection connect = connectToMySql();
+		try {
+			connect.setAutoCommit(false);
+
+			String queryHero = "DELETE FROM `movie_hero` WHERE `movie_hero`.`id_movie` = ?;";
+
+			PreparedStatement psMovie = connect.prepareStatement(queryHero);
+			psMovie.setInt(1, movie.getMovie_id());
+			psMovie.execute();
+
+			String queryMovie = "DELETE FROM `movie` WHERE `movie`.`id` = ?;";
+
+			PreparedStatement psHero = connect.prepareStatement(queryMovie);
+			psHero.setInt(1, movie.getMovie_id());
+			psHero.execute();
+
+			connect.commit();
+		} catch (Exception e) {
+			connect.rollback();
+			throw new IllegalStateException("Movie not deleted!! " + e.getMessage());
+		} finally {
+			connect.close();
+		}
+	}
 
 	public void linkMovieToHero(Movie movie, Hero hero) throws SQLException {
 		String query = "INSERT INTO `movie_hero` (`id_movie`,`id_hero`) VALUES (?,?);";
