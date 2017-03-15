@@ -12,7 +12,7 @@ import io.avengers.domain.Movie;
 import io.avengers.domain.Team;
 
 public class HeroDao extends MarvelDao{
-	// DAO: direct access object
+	// DAO: data access object
 
 	public Set<Hero> findAll() throws SQLException {
 		String query = "SELECT h.id AS hero_id, h.name AS alias,  h.picture heroPicture, h.abilities, irl.name AS realName "
