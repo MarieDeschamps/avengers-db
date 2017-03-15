@@ -3,7 +3,9 @@ package io.avengers.service;
 import java.sql.SQLException;
 import java.util.Set;
 
+import io.avengers.dao.HeroDao;
 import io.avengers.dao.TeamDao;
+import io.avengers.domain.Hero;
 import io.avengers.domain.Team;
 
 public class TeamService {
@@ -25,6 +27,19 @@ IllegalStateException stateException = new IllegalStateException("Connection imp
 		}
 		try {
 			return new TeamDao().findTeam(teamID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw stateException;
+		}
+	}
+	
+	public void createTeam(Team team){
+		if(team==null || team.getName()==null){
+			throw new IllegalStateException("The hero cannot be created");
+		}
+		
+		try {
+			new TeamDao().createTeam(team);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw stateException;

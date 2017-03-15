@@ -10,6 +10,10 @@ public class Team  implements Comparable<Team>{
 	List<Hero> heroes;
 	List<Movie> movies;
 	
+	public Team(){
+		super();
+	}
+	
 	public Team(int id, String name, byte[] picture, List<Hero> heroes, List<Movie> movies) {
 		this.id = id;
 		this.name = name;
