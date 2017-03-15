@@ -1,7 +1,6 @@
 package io.avengers.dao;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -9,7 +8,6 @@ import java.sql.Statement;
 import java.util.TreeSet;
 import java.util.Set;
 
-import io.avengers.domain.Hero;
 import io.avengers.domain.Movie;
 
 public class MovieDao extends MarvelDao {
@@ -109,7 +107,7 @@ public class MovieDao extends MarvelDao {
 		connect = connectToMySql();
 		connect.setAutoCommit(false);
 		
-		String query1 = "INSERT INTO `movies` "
+		String query1 = "INSERT INTO `movie` "
 				+ "(`name`) "
 				+ "VALUES (?);"; //TODO add the date query
 		
