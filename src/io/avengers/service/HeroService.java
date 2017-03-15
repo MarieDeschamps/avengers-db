@@ -40,7 +40,7 @@ public class HeroService {
 		}
 
 		try {
-			new HeroDao().createHero(hero);
+			hero = new HeroDao().createHero(hero);
 			if (hero.getTeams() != null && !hero.getTeams().isEmpty()) {
 				for (Team t : hero.getTeams()) {
 					new TeamService().linkTeamToHero(t, hero);

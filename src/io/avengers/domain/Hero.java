@@ -59,6 +59,10 @@ public class Hero implements Comparable<Hero>{
 	public int getId() {
 		return id;
 	}
+	
+	public void setId(int id){
+		this.id = id;
+	}
 
 	public String getAlias() {
 		return alias;

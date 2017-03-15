@@ -41,7 +41,7 @@ IllegalStateException stateException = new IllegalStateException("Connection imp
 		}
 		
 		try {
-			new TeamDao().createTeam(team);
+			team = new TeamDao().createTeam(team);
 			if(team.getHeroes()!=null && !team.getHeroes().isEmpty()){
 				for(Hero h : team.getHeroes()){
 					this.linkTeamToHero(team, h);

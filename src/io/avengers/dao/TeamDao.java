@@ -81,7 +81,7 @@ public class TeamDao extends MarvelDao {
 		}
 	}
 
-	public void createTeam(Team team) throws SQLException {
+	public Team createTeam(Team team) throws SQLException {
 		Connection connect = connectToMySql();
 		try {
 			connect.setAutoCommit(false);
@@ -105,6 +105,8 @@ public class TeamDao extends MarvelDao {
 			if (resultId <= 0) {
 				connect.rollback();
 				throw new IllegalStateException("team not created in database !");
+			}else{
+				team.setId(resultId);
 			}
 
 			connect.commit();
@@ -114,6 +116,7 @@ public class TeamDao extends MarvelDao {
 		} finally {
 			connect.close();
 		}
+		return team;
 	}
 
 	public void linkTeamToHero(Team team, Hero hero) throws SQLException {

@@ -117,8 +117,9 @@ public class HeroDao extends MarvelDao {
 		}
 	}
 
-	public void createHero(Hero hero) throws SQLException {
+	public Hero createHero(Hero hero) throws SQLException {
 		Connection connect = connectToMySql();
+		
 		try {
 			connect.setAutoCommit(false);
 
@@ -134,7 +135,7 @@ public class HeroDao extends MarvelDao {
 			ps1.execute();
 
 			ResultSet rs = ps1.getGeneratedKeys();
-			int resultId = -1;
+			int resultId =-1;
 			if (rs.next()) {
 				resultId = rs.getInt(1);
 			}
@@ -142,6 +143,8 @@ public class HeroDao extends MarvelDao {
 			if (resultId <= 0) {
 				connect.rollback();
 				throw new IllegalStateException("hero not created in database !");
+			}else{
+				hero.setId(resultId);
 			}
 
 			if (hero.getRealName() != null && !hero.getRealName().isEmpty()) {
@@ -160,6 +163,7 @@ public class HeroDao extends MarvelDao {
 		} finally {
 			connect.close();
 		}
+		return hero;
 	}
 
 	public void deleteHero(Hero hero) throws SQLException {
