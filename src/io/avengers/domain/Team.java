@@ -3,6 +3,9 @@ package io.avengers.domain;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Team  implements Comparable<Team>{
 	int id;
 	String name;

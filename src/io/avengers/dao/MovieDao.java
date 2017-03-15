@@ -18,18 +18,20 @@ public class MovieDao extends MarvelDao {
 
 		Connection connect = connectToMySql();
 
-		Statement statement = connect.createStatement();
-		ResultSet resultSet = statement.executeQuery(query);
-
 		Set<Movie> movies = new TreeSet<>();
 
-		while (resultSet.next()) {
+		try {
+			Statement statement = connect.createStatement();
+			ResultSet resultSet = statement.executeQuery(query);
 
-			movies.add(resultSetToMovie(resultSet));
+			while (resultSet.next()) {
+
+				movies.add(resultSetToMovie(resultSet));
+			}
+
+		} finally {
+			connect.close();
 		}
-
-		connect.close();
-
 		return movies;
 	}
 	/*
@@ -62,24 +64,26 @@ public class MovieDao extends MarvelDao {
 				+ "WHERE m.id = ?;";
 
 		Connection connect = connectToMySql();
-
-		PreparedStatement statement = connect.prepareStatement(query);
-		statement.setInt(1, movieID);
-		ResultSet resultSet = statement.executeQuery();
-
 		Movie movie = null;
-		HeroDao hDao = new HeroDao();
-		TeamDao tDao = new TeamDao();
-		while (resultSet.next()) {
-			if (movie == null) {
-				movie = resultSetToMovie(resultSet);
+
+		try {
+			PreparedStatement statement = connect.prepareStatement(query);
+			statement.setInt(1, movieID);
+			ResultSet resultSet = statement.executeQuery();
+
+			HeroDao hDao = new HeroDao();
+			TeamDao tDao = new TeamDao();
+			while (resultSet.next()) {
+				if (movie == null) {
+					movie = resultSetToMovie(resultSet);
+				}
+				movie.addHeroe(hDao.resultSetToHero(resultSet));
+				movie.addTeam(tDao.resultSetToTeam(resultSet));
 			}
-			movie.addHeroe(hDao.resultSetToHero(resultSet));
-			movie.addTeam(tDao.resultSetToTeam(resultSet));
+
+		} finally {
+			connect.close();
 		}
-
-		connect.close();
-
 		return movie;
 	}
 
@@ -101,42 +105,43 @@ public class MovieDao extends MarvelDao {
 			throw new IllegalStateException("Database has been compromised: " + e.getMessage());
 		}
 	}
-	
-	public void createMovie(Movie movie) throws SQLException{
+
+	public void createMovie(Movie movie) throws SQLException {
 		Connection connect = null;
-		try{
-		connect = connectToMySql();
-		connect.setAutoCommit(false);
-		
-		String query1 = "INSERT INTO `movie` "
-				+ "(`name`) "
-				+ "VALUES (?);"; //TODO add the date query
-		
-		PreparedStatement ps1 = connect.prepareStatement(query1, Statement.RETURN_GENERATED_KEYS);
-        ps1.setString(1, movie.getMovie_title() );
-        ps1.execute();
-		
-        ResultSet rs = ps1.getGeneratedKeys();
-        int resultId = -1;
-        if(rs.next()){
-        	resultId = rs.getInt(1);
-        }
-		 
-		if(resultId<=0){
+		try {
+			connect = connectToMySql();
+			connect.setAutoCommit(false);
+
+			String query1 = "INSERT INTO `movie` " + "(`name`) " + "VALUES (?);"; // TODO
+																					// add
+																					// the
+																					// date
+																					// query
+
+			PreparedStatement ps1 = connect.prepareStatement(query1, Statement.RETURN_GENERATED_KEYS);
+			ps1.setString(1, movie.getMovie_title());
+			ps1.execute();
+
+			ResultSet rs = ps1.getGeneratedKeys();
+			int resultId = -1;
+			if (rs.next()) {
+				resultId = rs.getInt(1);
+			}
+
+			if (resultId <= 0) {
+				connect.rollback();
+				throw new IllegalStateException("movie not created in database !");
+			}
+
+			connect.commit();
+		} catch (Exception e) {
 			connect.rollback();
-			throw new IllegalStateException("movie not created in database !");
-		}
-		
-		connect.commit();
-		}catch (Exception e) {
-			connect.rollback();
-			throw new IllegalStateException("Database has been compromised: "+e.getMessage());
-		}
-		finally{
+			throw new IllegalStateException("Database has been compromised: " + e.getMessage());
+		} finally {
 			connect.close();
 		}
 	}
-	
+
 	public void linkMovieToHero(Movie movie, Hero hero) throws SQLException {
 		String query = "INSERT INTO `movie_hero` (`id_movie`,`id_hero`) VALUES (?,?);";
 
@@ -148,7 +153,6 @@ public class MovieDao extends MarvelDao {
 			ps.setInt(2, hero.getId());
 			ps.execute();
 		} finally {
-
 			connect.close();
 		}
 	}

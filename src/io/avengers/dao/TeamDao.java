@@ -18,19 +18,18 @@ public class TeamDao extends MarvelDao {
 				+ "ORDER BY t.name ASC";
 
 		Connection connect = connectToMySql();
-
-		Statement statement = connect.createStatement();
-		ResultSet resultSet = statement.executeQuery(query);
-
 		Set<Team> teams = new TreeSet<>();
-
-		while (resultSet.next()) {
-
-			teams.add(resultSetToTeam(resultSet));
+		try {
+			Statement statement = connect.createStatement();
+			ResultSet resultSet = statement.executeQuery(query);
+	
+			while (resultSet.next()) {
+				teams.add(resultSetToTeam(resultSet));
+			}
+		
+		} finally {
+			connect.close();
 		}
-
-		connect.close();
-
 		return teams;
 	}
 
@@ -44,25 +43,28 @@ public class TeamDao extends MarvelDao {
 				+ "WHERE t.team_id = " + teamID;
 
 		Connection connect = connectToMySql();
-
-		Statement statement = connect.createStatement();
-		ResultSet resultSet = statement.executeQuery(query);
-
 		Team team = null;
-		HeroDao hDao = new HeroDao();
-		MovieDao mDao = new MovieDao();
-
-		while (resultSet.next()) {
-			if (team == null) {
-				team = resultSetToTeam(resultSet);
+		try {
+			Statement statement = connect.createStatement();
+			ResultSet resultSet = statement.executeQuery(query);
+	
+			
+			HeroDao hDao = new HeroDao();
+			MovieDao mDao = new MovieDao();
+	
+			while (resultSet.next()) {
+				if (team == null) {
+					team = resultSetToTeam(resultSet);
+				}
+				team.addHeroe(hDao.resultSetToHero(resultSet));
+				team.addMovie(mDao.resultSetToMovie(resultSet));
 			}
-			team.addHeroe(hDao.resultSetToHero(resultSet));
-			team.addMovie(mDao.resultSetToMovie(resultSet));
+	
+		} finally {
+			connect.close();
 		}
-
-		connect.close();
-
 		return team;
+
 	}
 
 	protected Team resultSetToTeam(ResultSet resultSet) {
@@ -80,9 +82,8 @@ public class TeamDao extends MarvelDao {
 	}
 
 	public void createTeam(Team team) throws SQLException {
-		Connection connect = null;
+		Connection connect = connectToMySql();
 		try {
-			connect = connectToMySql();
 			connect.setAutoCommit(false);
 
 			String query1 = "INSERT INTO `team` (`name`) VALUES (?);"; // TODO
