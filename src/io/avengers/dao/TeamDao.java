@@ -8,7 +8,6 @@ import java.sql.Statement;
 import java.util.TreeSet;
 import java.util.Set;
 
-import io.avengers.domain.Hero;
 import io.avengers.domain.Team;
 
 public class TeamDao extends MarvelDao {
@@ -103,7 +102,7 @@ public class TeamDao extends MarvelDao {
 		 
 		if(resultId<=0){
 			connect.rollback();
-			throw new IllegalStateException("hero not created in database !");
+			throw new IllegalStateException("team not created in database !");
 		}
 		
 		connect.commit();
