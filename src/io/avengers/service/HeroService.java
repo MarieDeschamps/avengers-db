@@ -4,7 +4,11 @@ import java.sql.SQLException;
 import java.util.Set;
 
 import io.avengers.dao.HeroDao;
+import io.avengers.dao.MovieDao;
+import io.avengers.dao.TeamDao;
 import io.avengers.domain.Hero;
+import io.avengers.domain.Movie;
+import io.avengers.domain.Team;
 
 public class HeroService {
 	
@@ -39,6 +43,16 @@ public class HeroService {
 		
 		try {
 			new HeroDao().createHero(hero);
+			if(hero.getTeams()!=null && !hero.getTeams().isEmpty()){
+				for(Team t : hero.getTeams()){
+					new TeamService().linkTeamToHero(t, hero);
+				}
+			}
+			if(hero.getMovies()!=null && !hero.getMovies().isEmpty()){
+				for(Movie m : hero.getMovies()){
+					new MovieService().linkMovieToHero(m, hero);
+				}
+			}
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw stateException;
