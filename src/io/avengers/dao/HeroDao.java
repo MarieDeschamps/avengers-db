@@ -68,7 +68,7 @@ public class HeroDao extends MarvelDao {
 				+ "WHERE h.id = " + characterID + ";";
 
 		Connection connect = connectToMySql();
-		
+
 		Hero hero = null;
 		try {
 			Statement statement = connect.createStatement();
@@ -118,9 +118,8 @@ public class HeroDao extends MarvelDao {
 	}
 
 	public void createHero(Hero hero) throws SQLException {
-		Connection connect = null;
+		Connection connect = connectToMySql();
 		try {
-			connect = connectToMySql();
 			connect.setAutoCommit(false);
 
 			String query1 = "INSERT INTO `heroes` " + "(`name`, `picture`, `abilities`) " + "VALUES (?, null, ?);"; // TODO
@@ -163,5 +162,42 @@ public class HeroDao extends MarvelDao {
 		}
 	}
 
-	
+	public void deleteHero(Hero hero) throws SQLException {
+		Connection connect = connectToMySql();
+		try {
+			connect.setAutoCommit(false);
+
+			String queryIrl = "DELETE FROM `irl` WHERE `irl`.`hero_id` = ?;";
+
+			PreparedStatement psIrl = connect.prepareStatement(queryIrl);
+			psIrl.setInt(1, hero.getId());
+			psIrl.execute();
+
+			String queryMovie = "DELETE FROM `movie_hero` WHERE `movie_hero`.`id_hero` = ?;";
+
+			PreparedStatement psMovie = connect.prepareStatement(queryMovie);
+			psMovie.setInt(1, hero.getId());
+			psMovie.execute();
+
+			String queryTeam = "DELETE FROM `team_hero` WHERE `team_hero`.`hero_id` = ?;";
+
+			PreparedStatement psTeam = connect.prepareStatement(queryTeam);
+			psTeam.setInt(1, hero.getId());
+			psTeam.execute();
+
+			String queryHero = "DELETE FROM `heroes` WHERE `heroes`.`id` = ?;";
+
+			PreparedStatement psHero = connect.prepareStatement(queryHero);
+			psHero.setInt(1, hero.getId());
+			psHero.execute();
+
+			connect.commit();
+		} catch (Exception e) {
+			connect.rollback();
+			throw new IllegalStateException("Hero not deleted!! " + e.getMessage());
+		} finally {
+			connect.close();
+		}
+	}
+
 }
