@@ -3,7 +3,9 @@ package io.avengers.service;
 import java.sql.SQLException;
 import java.util.Set;
 
+import io.avengers.dao.HeroDao;
 import io.avengers.dao.MovieDao;
+import io.avengers.domain.Hero;
 import io.avengers.domain.Movie;
 
 public class MovieService {
@@ -26,6 +28,19 @@ public class MovieService {
 
 		try {
 			return new MovieDao().findMovie(movieID);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw stateException;
+		}
+	}
+	
+	public void createMovie(Movie movie){
+		if(movie==null || movie.getMovie_title()==null){
+			throw new IllegalStateException("The movie cannot be created");
+		}
+		
+		try {
+			new MovieDao().createMovie(movie);
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw stateException;

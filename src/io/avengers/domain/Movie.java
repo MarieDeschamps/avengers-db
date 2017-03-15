@@ -4,6 +4,9 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.xml.bind.annotation.XmlRootElement;
+
+@XmlRootElement
 public class Movie implements Comparable<Movie>{
 
 	int movie_id;
@@ -14,6 +17,7 @@ public class Movie implements Comparable<Movie>{
 	List<Team> teams;
 	byte[] picture;
 	Date date;
+	
 	public Movie(int movie_id, String movie_title, String synopsis, long budget, List<Hero> heroes, List<Team> teams,
 			byte[] picture, Date date) {
 		super();
@@ -33,6 +37,9 @@ public class Movie implements Comparable<Movie>{
 		}
 		this.picture = picture;
 		this.date = date;
+	}
+	
+	public Movie() {
 	}
 	
 	@Override

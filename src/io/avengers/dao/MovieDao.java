@@ -9,6 +9,7 @@ import java.sql.Statement;
 import java.util.TreeSet;
 import java.util.Set;
 
+import io.avengers.domain.Hero;
 import io.avengers.domain.Movie;
 
 public class MovieDao extends MarvelDao {
@@ -99,6 +100,41 @@ public class MovieDao extends MarvelDao {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new IllegalStateException("Database has been compromised: " + e.getMessage());
+		}
+	}
+	
+	public void createMovie(Movie movie) throws SQLException{
+		Connection connect = null;
+		try{
+		connect = connectToMySql();
+		connect.setAutoCommit(false);
+		
+		String query1 = "INSERT INTO `movies` "
+				+ "(`name`) "
+				+ "VALUES (?);"; //TODO add the date query
+		
+		PreparedStatement ps1 = connect.prepareStatement(query1, Statement.RETURN_GENERATED_KEYS);
+        ps1.setString(1, movie.getMovie_title() );
+        ps1.execute();
+		
+        ResultSet rs = ps1.getGeneratedKeys();
+        int resultId = -1;
+        if(rs.next()){
+        	resultId = rs.getInt(1);
+        }
+		 
+		if(resultId<=0){
+			connect.rollback();
+			throw new IllegalStateException("movie not created in database !");
+		}
+		
+		connect.commit();
+		}catch (Exception e) {
+			connect.rollback();
+			throw new IllegalStateException("Database has been compromised: "+e.getMessage());
+		}
+		finally{
+			connect.close();
 		}
 	}
 
