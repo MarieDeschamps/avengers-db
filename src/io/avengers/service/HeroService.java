@@ -32,6 +32,19 @@ public class HeroService {
 		}
 	}
 	
+	public void createHero(Hero hero){
+		if(hero==null || hero.getAlias()==null){
+			throw new IllegalStateException("The hero cannot be created");
+		}
+		
+		try {
+			new HeroDao().createHero(hero);
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw stateException;
+		}
+	}
+	
 //	public Set<Hero> findHeroesByName(String term) {
 //		
 //		if(term== null){
