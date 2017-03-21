@@ -39,7 +39,7 @@ public class MovieService {
 		}
 
 		try {
-			new MovieDao().createMovie(movie);
+			movie = new MovieDao().createMovie(movie);
 
 			if (movie.getHeroes() != null && !movie.getHeroes().isEmpty()) {
 				for (Hero hero : movie.getHeroes()) {

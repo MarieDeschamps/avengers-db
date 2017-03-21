@@ -71,7 +71,9 @@ public class Movie implements Comparable<Movie>{
 	public int getMovie_id() {
 		return movie_id;
 	}
-
+	public void setMovie_id(int movie_id) {
+		this.movie_id = movie_id;
+	}	
 	public String getMovie_title() {
 		return movie_title;
 	}

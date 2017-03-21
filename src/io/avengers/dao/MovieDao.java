@@ -106,17 +106,13 @@ public class MovieDao extends MarvelDao {
 		}
 	}
 
-	public void createMovie(Movie movie) throws SQLException {
+	public Movie createMovie(Movie movie) throws SQLException {
 		Connection connect = null;
 		try {
 			connect = connectToMySql();
 			connect.setAutoCommit(false);
 
-			String query1 = "INSERT INTO `movie` " + "(`name`) " + "VALUES (?);"; // TODO
-																					// add
-																					// the
-																					// date
-																					// query
+			String query1 = "INSERT INTO `movie` " + "(`name`) " + "VALUES (?);"; // TODO add the date query
 
 			PreparedStatement ps1 = connect.prepareStatement(query1, Statement.RETURN_GENERATED_KEYS);
 			ps1.setString(1, movie.getMovie_title());
@@ -132,6 +128,8 @@ public class MovieDao extends MarvelDao {
 				connect.rollback();
 				throw new IllegalStateException("movie not created in database !");
 			}
+			
+			movie.setMovie_id(resultId);
 
 			connect.commit();
 		} catch (Exception e) {
@@ -140,6 +138,8 @@ public class MovieDao extends MarvelDao {
 		} finally {
 			connect.close();
 		}
+		
+		return movie;
 	}
 	
 	public void deleteMovie(Movie movie) throws SQLException {
