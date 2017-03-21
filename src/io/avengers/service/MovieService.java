@@ -33,7 +33,7 @@ public class MovieService {
 		}
 	}
 
-	public void createMovie(Movie movie) {
+	public Movie createMovie(Movie movie) {
 		if (movie == null || movie.getMovie_title() == null) {
 			throw new IllegalStateException("The movie cannot be created");
 		}
@@ -46,6 +46,7 @@ public class MovieService {
 					this.linkMovieToHero(movie, hero);
 				}
 			}
+			return movie;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw stateException;

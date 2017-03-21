@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @XmlRootElement
 public class Movie implements Comparable<Movie>{
@@ -133,6 +134,7 @@ public class Movie implements Comparable<Movie>{
 		}	
 	}
 	
+	@XmlTransient
 	public byte[] getPicture() {
 		return picture;
 	}
