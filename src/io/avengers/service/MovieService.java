@@ -67,13 +67,15 @@ public class MovieService {
 		}
 	}
 
-	public void linkMovieToHero(Movie movie, Hero hero) {
+	public Movie linkMovieToHero(Movie movie, Hero hero) {
 		if (movie == null || hero == null) {
 			throw new IllegalStateException("The link cannot be created");
 		}
 
 		try {
 			new MovieDao().linkMovieToHero(movie, hero);
+			movie.addHeroe(hero);
+			return movie;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw stateException;
