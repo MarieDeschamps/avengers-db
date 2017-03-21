@@ -109,6 +109,12 @@ public class Movie implements Comparable<Movie>{
 		}
 	}
 	
+	public void removeHeroe(Hero hero)  {
+		if (hero != null && !heroes.contains(hero)){
+			heroes.remove(hero);
+		}
+	}
+	
 	public List<Team> Team() {
 		return teams;
 	}

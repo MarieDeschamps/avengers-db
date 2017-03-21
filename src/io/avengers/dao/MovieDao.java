@@ -112,7 +112,7 @@ public class MovieDao extends MarvelDao {
 			connect = connectToMySql();
 			connect.setAutoCommit(false);
 
-			String query1 = "INSERT INTO `movie` " + "(`name`) " + "VALUES (?);"; // TODO add the date query
+			String query1 = "INSERT INTO `movie` (`name`) VALUES (?);"; // TODO add the date query
 
 			PreparedStatement ps1 = connect.prepareStatement(query1, Statement.RETURN_GENERATED_KEYS);
 			ps1.setString(1, movie.getMovie_title());
@@ -130,6 +130,42 @@ public class MovieDao extends MarvelDao {
 			}
 			
 			movie.setMovie_id(resultId);
+
+			connect.commit();
+		} catch (Exception e) {
+			connect.rollback();
+			throw new IllegalStateException("Database has been compromised: " + e.getMessage());
+		} finally {
+			connect.close();
+		}
+		
+		return movie;
+	}
+	
+	public Movie updateMovie(Movie movie) throws SQLException {
+		Connection connect = null;
+		try {
+			connect = connectToMySql();
+			connect.setAutoCommit(false);
+
+			String query1 = "UPDATE `movie` SET `name`='?' WHERE `id`=?;";
+
+			PreparedStatement ps1 = connect.prepareStatement(query1, Statement.RETURN_GENERATED_KEYS);
+			ps1.setString(1, movie.getMovie_title());
+			ps1.setInt(2, movie.getMovie_id());
+			ps1.execute();
+
+			ResultSet rs = ps1.getGeneratedKeys();
+			int resultId = -1;
+			if (rs.next()) {
+				resultId = rs.getInt(1);
+			}
+
+			if (resultId <= 0) {
+				connect.rollback();
+				throw new IllegalStateException("movie not modified in database !");
+			}
+			
 
 			connect.commit();
 		} catch (Exception e) {
@@ -183,4 +219,18 @@ public class MovieDao extends MarvelDao {
 		}
 	}
 
+	public void unlinkMovieToHero(Movie movie, Hero hero) throws SQLException {
+		String query = "DELETE FROM `movie_hero` WHERE `movie_hero`.`id_movie`=? AND `movie_hero`.`id_hero`=?;";
+
+		Connection connect = connectToMySql();
+
+		try {
+			PreparedStatement ps = connect.prepareStatement(query);
+			ps.setInt(1, movie.getMovie_id());
+			ps.setInt(2, hero.getId());
+			ps.execute();
+		} finally {
+			connect.close();
+		}
+	}
 }

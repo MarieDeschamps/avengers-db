@@ -53,6 +53,20 @@ public class MovieService {
 		}
 	}
 	
+	public Movie updateMovie(Movie movie){
+		if (movie == null || movie.getMovie_title() == null) {
+			throw new IllegalStateException("The movie cannot be modified");
+		}
+
+		try {
+			return new MovieDao().updateMovie(movie);
+
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw stateException;
+		}
+	}
+	
 	public void deleteMovie(Movie movie) {
 		if (movie == null) {
 			throw new IllegalStateException("The movie cannot be deleted");
@@ -75,6 +89,21 @@ public class MovieService {
 		try {
 			new MovieDao().linkMovieToHero(movie, hero);
 			movie.addHeroe(hero);
+			return movie;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw stateException;
+		}
+	}
+	
+	public Movie unlinkMovieToHero(Movie movie, Hero hero) {
+		if (movie == null || hero == null) {
+			throw new IllegalStateException("The link cannot be deleted");
+		}
+
+		try {
+			new MovieDao().unlinkMovieToHero(movie, hero);
+			movie.removeHeroe(hero);
 			return movie;
 		} catch (SQLException e) {
 			e.printStackTrace();
