@@ -5,6 +5,7 @@ import java.util.Base64;
 import java.util.List;
 
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 @XmlRootElement
 public class Hero implements Comparable<Hero>{
@@ -123,10 +124,12 @@ public class Hero implements Comparable<Hero>{
 		}
 	}
 
+	@XmlTransient
 	public byte[] getPicture() {
 		return picture;
 	}
 	
+	@XmlTransient
 	public String getPictureString(){
 		byte[] encodedImage=Base64.getEncoder().encode(picture);
 		String pict = "data:image/jpeg;base64," + new String(encodedImage);
