@@ -9,6 +9,7 @@ import java.util.TreeSet;
 import java.util.Set;
 
 import io.avengers.domain.Hero;
+import io.avengers.domain.Movie;
 import io.avengers.domain.Team;
 
 public class TeamDao extends MarvelDao {
@@ -131,6 +132,21 @@ public class TeamDao extends MarvelDao {
 			ps.execute();
 		} finally {
 
+			connect.close();
+		}
+	}
+	
+	public void unlinkTeamToHero(Team team, Hero hero) throws SQLException {
+		String query = "DELETE FROM `team_hero` WHERE `team_hero`.`team_id`=? AND `team_hero`.`hero_id`=?;";
+
+		Connection connect = connectToMySql();
+
+		try {
+			PreparedStatement ps = connect.prepareStatement(query);
+			ps.setInt(1, team.getId());
+			ps.setInt(2, hero.getId());
+			ps.execute();
+		} finally {
 			connect.close();
 		}
 	}

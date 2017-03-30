@@ -15,11 +15,13 @@ public class HeroDaoTest {
 
 	HeroDao dao;
 	Connection connect;
-
+	Hero test = new Hero(0, "Grrr", "Miauu", null, null, null, null);
+	
 	@Before
 	public void setUp() throws Exception {
 		dao = new HeroDao();
 		connect = dao.connectToMySql();
+		
 	}
 
 	@After
@@ -44,6 +46,17 @@ public class HeroDaoTest {
 		
 		assertFalse(dao.findHero(heroID).getTeams().contains(null));
 		assertFalse(dao.findHero(heroID).getMovies().contains(null));
+		
+	}
+	
+		
+	@Test
+	public void testCreateDeleteHero() throws SQLException {
+		test = dao.createHero(test);
+		
+		assertTrue(test.getId() != 0 );
+		
+		dao.deleteHero(test);
 		
 	}
 

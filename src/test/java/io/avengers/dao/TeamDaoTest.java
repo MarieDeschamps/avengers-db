@@ -10,12 +10,16 @@ import org.junit.Before;
 import org.junit.Test;
 
 import io.avengers.domain.Hero;
+import io.avengers.domain.Movie;
 import io.avengers.domain.Team;
 
 public class TeamDaoTest {
 
 	TeamDao dao;
 	Connection connect;
+	Hero thor = new Hero(5, "Thor", null, null, null, null, null);
+	Team xmen = new Team(2, "Xmen",null, null, null);
+	Team test = new Team(0, "Boo",null, null, null);
 
 	@Before
 	public void setUp() throws Exception {
@@ -47,5 +51,31 @@ public class TeamDaoTest {
 		assertFalse(dao.findTeam(teamID).getMovies().contains(null));
 		
 	}
+	
+	@Test
+	public void testCreateDeleteTeam() throws SQLException {
+		test = dao.createTeam(test);
+		
+		assertTrue(test.getId() != 0 );
+		
+		dao.deleteTeam(test);
+		
+	}
+	
+	/*@Test
+	public void testUpdateTeam() throws SQLException {
+		assertFalse(dao.updateTeam(xmen).getName().equals("Xmen") );		
+	}*/
+	
+	@Test
+	public void testLinkTeam() throws SQLException {
+		dao.linkTeamToHero(xmen, thor);		
+	}
+	
+	@Test
+	public void testUnlinkMovie() throws SQLException {
+		dao.unlinkTeamToHero(xmen, thor);		
+	}
+
 
 }

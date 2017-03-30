@@ -123,11 +123,7 @@ public class HeroDao extends MarvelDao {
 		try {
 			connect.setAutoCommit(false);
 
-			String query1 = "INSERT INTO `heroes` " + "(`name`, `picture`, `abilities`) " + "VALUES (?, null, ?);"; // TODO
-																													// add
-																													// the
-																													// picture
-																													// query
+			String query1 = "INSERT INTO `heroes` " + "(`name`, `picture`, `abilities`) " + "VALUES (?, null, ?);"; // TODO add the picture query
 
 			PreparedStatement ps1 = connect.prepareStatement(query1, Statement.RETURN_GENERATED_KEYS);
 			ps1.setString(1, hero.getAlias());
