@@ -57,6 +57,7 @@ public class HeroDaoTest {
 		assertTrue(test.getId() != 0 );
 		
 		dao.deleteHero(test);
+		assertTrue(dao.findHero(test.getId()) == null);
 		
 	}
 

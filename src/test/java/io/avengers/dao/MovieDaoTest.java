@@ -62,7 +62,7 @@ public class MovieDaoTest {
 		assertTrue(testM.getMovie_id() != 0 );
 		
 		dao.deleteMovie(testM);
-		
+		assertTrue(dao.findMovie(testM.getMovie_id()) == null);
 	}
 	
 	@Test

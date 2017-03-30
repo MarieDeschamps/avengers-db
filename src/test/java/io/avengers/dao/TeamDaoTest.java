@@ -10,7 +10,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import io.avengers.domain.Hero;
-import io.avengers.domain.Movie;
 import io.avengers.domain.Team;
 
 public class TeamDaoTest {
@@ -59,7 +58,7 @@ public class TeamDaoTest {
 		assertTrue(test.getId() != 0 );
 		
 		dao.deleteTeam(test);
-		
+		assertTrue(dao.findTeam(test.getId()) == null);
 	}
 	
 	/*@Test
