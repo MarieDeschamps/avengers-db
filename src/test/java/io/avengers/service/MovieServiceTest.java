@@ -90,6 +90,77 @@ public class MovieServiceTest {
 		assertTrue(mService.findMovie(test.getMovie_id())==null || mService.findMovie(test.getMovie_id()).equals(new Movie()));
 	}
 	
+	@Test(expected = IllegalArgumentException.class)
+	public void linkMovieToHeroMovieNull(){
+		Hero h = new Hero(3, "Hulk", "Bruce Banner", null, null, null, null);
+		mService.linkMovieToHero(null, h);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void linkMovieToHeroHeroNull(){
+		mService.linkMovieToHero(civilWar, null);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void linkMovieToHeroHeroWithoutId(){
+		Hero h = new Hero(0, "Hulk", "Bruce Banner", null, null, null, null);
+		mService.linkMovieToHero(civilWar, h);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void unlinkMovieToHeroMovieNull(){
+		Hero h = new Hero(3, "Hulk", "Bruce Banner", null, null, null, null);
+		mService.unlinkMovieToHero(null, h);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void unlinkMovieToHeroHeroNull(){
+		mService.unlinkMovieToHero(civilWar, null);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void unlinkMovieToHeroHeroWithoutId(){
+		Hero h = new Hero(0, "Hulk", "Bruce Banner", null, null, null, null);
+		mService.unlinkMovieToHero(civilWar, h);
+	}
+	
+	@Test
+	public void linkUnlinkMovieToHeroTest(){
+		Hero h = new Hero(3, "Hulk", "Bruce Banner", null, null, null, null);
+		mService.linkMovieToHero(civilWar, h);
+		mService.unlinkMovieToHero(civilWar, h);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void updateMovieTestNull(){
+		mService.updateMovie(null);
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void updateMovieTestNoId(){
+		mService.updateMovie(new Movie(0, "Civil war", null, 250, null, null, null, null));
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void updateMovieTestNoName(){
+		mService.updateMovie(new Movie(2, null, null, 250, null, null, null, null));
+	}
+	
+	@Test(expected = IllegalArgumentException.class)
+	public void updateMovieTestEmptyName(){
+		mService.updateMovie(new Movie(2, "", null, 250, null, null, null, null));
+	}
+	
+	@Test
+	public void updateMovieTestOK(){
+		Movie test = new Movie(2, "Civil war2", null, 250, null, null, null, null);
+		test = mService.updateMovie(test);
+		assertTrue(test.getMovie_title().equals("Civil war2"));
+		test = new Movie(2, "Civil war", null, 250, null, null, null, null);
+		test = mService.updateMovie(test);
+		assertTrue(test.getMovie_title().equals("Civil war"));
+	}
+	
 }
 
 	

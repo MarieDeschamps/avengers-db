@@ -54,8 +54,8 @@ public class MovieService {
 	}
 	
 	public Movie updateMovie(Movie movie){
-		if (movie == null || movie.getMovie_title() == null) {
-			throw new IllegalStateException("The movie cannot be modified");
+		if (movie == null || movie.getMovie_id() <=0 || movie.getMovie_title() == null || movie.getMovie_title().equals("")) {
+			throw new IllegalArgumentException("The movie cannot be modified");
 		}
 
 		try {
@@ -82,8 +82,8 @@ public class MovieService {
 	}
 
 	public Movie linkMovieToHero(Movie movie, Hero hero) {
-		if (movie == null || hero == null) {
-			throw new IllegalStateException("The link cannot be created");
+		if (movie == null || hero == null || movie.getMovie_id()<=0 || hero.getId()<=0) {
+			throw new IllegalArgumentException("The link cannot be created");
 		}
 
 		try {
@@ -97,8 +97,8 @@ public class MovieService {
 	}
 	
 	public Movie unlinkMovieToHero(Movie movie, Hero hero) {
-		if (movie == null || hero == null) {
-			throw new IllegalStateException("The link cannot be deleted");
+		if (movie == null || hero == null || movie.getMovie_id()<=0 || hero.getId()<=0) {
+			throw new IllegalArgumentException("The link cannot be deleted");
 		}
 
 		try {

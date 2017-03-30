@@ -148,24 +148,12 @@ public class MovieDao extends MarvelDao {
 			connect = connectToMySql();
 			connect.setAutoCommit(false);
 
-			String query1 = "UPDATE `movie` SET `name`='?' WHERE `id`=?;";
+			String query1 = "UPDATE `movie` SET `name`=? WHERE `id`=?;";
 
-			PreparedStatement ps1 = connect.prepareStatement(query1, Statement.RETURN_GENERATED_KEYS);
+			PreparedStatement ps1 = connect.prepareStatement(query1);
 			ps1.setString(1, movie.getMovie_title());
 			ps1.setInt(2, movie.getMovie_id());
 			ps1.execute();
-
-			ResultSet rs = ps1.getGeneratedKeys();
-			int resultId = -1;
-			if (rs.next()) {
-				resultId = rs.getInt(1);
-			}
-
-			if (resultId <= 0) {
-				connect.rollback();
-				throw new IllegalStateException("movie not modified in database !");
-			}
-			
 
 			connect.commit();
 		} catch (Exception e) {

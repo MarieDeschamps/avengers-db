@@ -20,7 +20,7 @@ public class MovieDaoTest {
 	int movieID;
 	Hero thor = new Hero(5, "Thor", null, null, null, null, null);
 	Movie testM = new Movie(0, "Grrr", "", 0, null, null, null, null);
-	Movie xmen = new Movie(4, "Xmen2", "", 75, null, null, null, null);
+	Movie xmen = new Movie(4, "Xmen", "", 75, null, null, null, null);
 
 	@Before
 	public void setUp() throws Exception {
@@ -36,7 +36,7 @@ public class MovieDaoTest {
 
 	@Test
 	public void testFindAll() throws SQLException {
-		assertTrue(dao.findAll().size() == 7 );
+		assertTrue(dao.findAll().size() >= 5 );
 		
 		Movie xmen = new Movie(4, "Xmen", "", 75, null, null, null, null);
 		assertTrue(dao.findAll().contains(xmen) );
@@ -65,10 +65,12 @@ public class MovieDaoTest {
 		
 	}
 	
-	@Ignore
 	@Test
 	public void testUpdateMovie() throws SQLException {
-		assertFalse(dao.updateMovie(xmen).getMovie_title().equals("Xmen") );		
+		Movie test = new Movie(4, "Xmen2", "", 75, null, null, null, null);
+		assertTrue(dao.updateMovie(test).getMovie_title().equals("Xmen2") );
+		test = new Movie(4, "Xmen", "", 75, null, null, null, null);
+		assertTrue(dao.updateMovie(test).getMovie_title().equals("Xmen") );
 	}
 	
 	@Test

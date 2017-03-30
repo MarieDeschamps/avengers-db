@@ -31,7 +31,7 @@ public class HeroDaoTest {
 
 	@Test
 	public void testFindAll() throws SQLException {
-		assertTrue(dao.findAll().size() >5 );
+		assertTrue(dao.findAll().size() >=5 );
 		
 		Hero hulk = new Hero(3, "Hulk", "Bruce Banner", null, null, null, null);
 		assertTrue(dao.findAll().contains(hulk) );
