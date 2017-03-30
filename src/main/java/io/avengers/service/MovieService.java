@@ -34,8 +34,8 @@ public class MovieService {
 	}
 
 	public Movie createMovie(Movie movie) {
-		if (movie == null || movie.getMovie_title() == null) {
-			throw new IllegalStateException("The movie cannot be created");
+		if (movie == null || movie.getMovie_title() == null || movie.getMovie_title().equals("")) {
+			throw new IllegalArgumentException("The movie cannot be created");
 		}
 
 		try {
@@ -68,8 +68,8 @@ public class MovieService {
 	}
 	
 	public void deleteMovie(Movie movie) {
-		if (movie == null) {
-			throw new IllegalStateException("The movie cannot be deleted");
+		if (movie == null || movie.getMovie_id()<=0) {
+			throw new IllegalArgumentException("The movie cannot be deleted");
 		}
 
 		try {

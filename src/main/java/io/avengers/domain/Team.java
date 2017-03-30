@@ -93,6 +93,12 @@ public class Team  implements Comparable<Team>{
 			heroes.add(hero);
 		}
 	}
+	
+	public void removeHeroe(Hero hero)  {
+		if (hero != null && !heroes.contains(hero)){
+			heroes.remove(hero);
+		}
+	}
 
 	public List<Movie> getMovies() {
 		return movies;

@@ -24,6 +24,7 @@ public class HeroService {
 	public Hero findHero(int characterID) {
 		if (characterID <= 0) {
 			System.out.println("Potential bug or illegal request");
+			return null;
 		}
 
 		try {
@@ -35,8 +36,8 @@ public class HeroService {
 	}
 
 	public Hero createHero(Hero hero) {
-		if (hero == null || hero.getAlias() == null) {
-			throw new IllegalStateException("The hero cannot be created");
+		if (hero == null || hero.getAlias() == null || hero.getAlias().equals("")) {
+			throw new IllegalArgumentException("The hero cannot be created");
 		}
 
 		try {
@@ -59,8 +60,8 @@ public class HeroService {
 	}
 
 	public void deleteHero(Hero hero) {
-		if (hero == null) {
-			throw new IllegalStateException("The hero cannot be deleted");
+		if (hero == null || hero.getId()<=0) {
+			throw new IllegalArgumentException("The hero cannot be deleted");
 		}
 
 		try {

@@ -3,11 +3,8 @@ package io.avengers.service;
 import java.sql.SQLException;
 import java.util.Set;
 
-import io.avengers.dao.HeroDao;
-import io.avengers.dao.MovieDao;
 import io.avengers.dao.TeamDao;
 import io.avengers.domain.Hero;
-import io.avengers.domain.Movie;
 import io.avengers.domain.Team;
 
 public class TeamService {
@@ -35,9 +32,9 @@ IllegalStateException stateException = new IllegalStateException("Connection imp
 		}
 	}
 	
-	public void createTeam(Team team){
-		if(team==null || team.getName()==null){
-			throw new IllegalStateException("The team cannot be created");
+	public Team createTeam(Team team){
+		if(team==null || team.getName()==null || team.getName().equals("")){
+			throw new IllegalArgumentException("The team cannot be created");
 		}
 		
 		try {
@@ -47,6 +44,7 @@ IllegalStateException stateException = new IllegalStateException("Connection imp
 					this.linkTeamToHero(team, h);
 				}
 			}
+			return team;
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw stateException;
@@ -66,9 +64,24 @@ IllegalStateException stateException = new IllegalStateException("Connection imp
 		}
 	}
 	
+	public Team unlinkTeamToHero(Team team, Hero hero) {
+		if (team == null || hero == null) {
+			throw new IllegalStateException("The link cannot be deleted");
+		}
+
+		try {
+			new TeamDao().unlinkTeamToHero(team, hero);
+			team.removeHeroe(hero);
+			return team;
+		} catch (SQLException e) {
+			e.printStackTrace();
+			throw stateException;
+		}
+	}
+	
 	public void deleteTeam(Team team) {
-		if (team == null) {
-			throw new IllegalStateException("The team cannot be deleted");
+		if (team == null || team.getId()<=0) {
+			throw new IllegalArgumentException("The team cannot be deleted");
 		}
 
 		try {

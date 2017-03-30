@@ -2,8 +2,9 @@ package io.avengers.ui;
 
 import javax.swing.JPanel;
 
-import io.avengers.service.HeroService;
+import io.avengers.service.HeroServiceTest;
 import io.avengers.service.ImageService;
+import io.avengers.service.ImageServiceTest;
 import io.avengers.ui.links.HeroLinks;
 
 import javax.swing.ImageIcon;

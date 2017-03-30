@@ -34,7 +34,7 @@ public class TeamDaoTest {
 
 	@Test
 	public void testFindAll() throws SQLException {
-		assertTrue(dao.findAll().size() == 2 );
+		assertTrue(dao.findAll().size() >= 2 );
 		
 		Team avengers = new Team(1, "Avengers",null, null, null);
 		assertTrue(dao.findAll().contains(avengers) );

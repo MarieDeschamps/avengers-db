@@ -1,6 +1,5 @@
 package io.avengers.ui;
 
-import io.avengers.dao.HeroDao;
 import io.avengers.service.HeroService;
 import io.avengers.service.MovieService;
 
