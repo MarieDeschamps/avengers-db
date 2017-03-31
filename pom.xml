@@ -4,23 +4,29 @@
 	<groupId>io.avengers</groupId>
 	<artifactId>avengers-db</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	
+
 	<dependencies>
 		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
 		<dependency>
-		    <groupId>mysql</groupId>
-		    <artifactId>mysql-connector-java</artifactId>
-		    <version>5.1.38</version>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.38</version>
 		</dependency>
-		
+
+		<dependency>
+			<groupId>io.avengers</groupId>
+			<artifactId>reset</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>
+
 		<!-- https://mvnrepository.com/artifact/com.miglayout/miglayout -->
 		<dependency>
-		    <groupId>com.miglayout</groupId>
-		    <artifactId>miglayout</artifactId>
-		    <version>3.7.3.1</version>
+			<groupId>com.miglayout</groupId>
+			<artifactId>miglayout</artifactId>
+			<version>3.7.3.1</version>
 		</dependency>
-		
-	
+
+
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
