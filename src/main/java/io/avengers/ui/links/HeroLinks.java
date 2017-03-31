@@ -4,19 +4,16 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
-import javax.swing.JLabel;
 import javax.swing.SwingUtilities;
 
 import io.avengers.domain.Hero;
 import io.avengers.domain.Movie;
 import io.avengers.domain.Team;
 import io.avengers.service.HeroService;
-import io.avengers.service.HeroServiceTest;
 import io.avengers.ui.DetailsPanel;
 import io.avengers.ui.ListPanel;
 import io.avengers.ui.MarvelFrame;
 import io.avengers.ui.PanelElement;
-import io.avengers.ui.PanelLink;
 import io.avengers.ui.PanelLinkName;
 
 public class HeroLinks {

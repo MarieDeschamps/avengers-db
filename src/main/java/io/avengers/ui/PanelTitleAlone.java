@@ -1,14 +1,13 @@
 package io.avengers.ui;
 
-import javax.swing.JPanel;
-import javax.swing.SwingConstants;
-
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.FlowLayout;
 import java.awt.Font;
 
 import javax.swing.JLabel;
-import java.awt.FlowLayout;
+import javax.swing.JPanel;
+import javax.swing.SwingConstants;
 
 public class PanelTitleAlone extends JPanel {
 

@@ -5,8 +5,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.TreeSet;
 import java.util.Set;
+import java.util.TreeSet;
 
 import io.avengers.domain.Hero;
 import io.avengers.domain.Movie;

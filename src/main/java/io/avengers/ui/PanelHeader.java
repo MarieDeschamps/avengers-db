@@ -1,23 +1,21 @@
 package io.avengers.ui;
 
-import javax.swing.JPanel;
-
-import io.avengers.service.HeroServiceTest;
-import io.avengers.service.ImageService;
-import io.avengers.service.ImageServiceTest;
-import io.avengers.ui.links.HeroLinks;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.FlowLayout;
+import java.awt.Font;
+import java.awt.SystemColor;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
 
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
-import java.awt.event.MouseAdapter;
-import java.awt.event.MouseEvent;
-import java.awt.Dimension;
-import java.awt.FlowLayout;
+import javax.swing.JPanel;
 import javax.swing.SwingConstants;
-import java.awt.Font;
-import java.awt.Color;
-import java.awt.SystemColor;
 import javax.swing.border.LineBorder;
+
+import io.avengers.service.ImageService;
+import io.avengers.ui.links.HeroLinks;
 
 public class PanelHeader extends JPanel {
 

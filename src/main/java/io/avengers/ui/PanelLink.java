@@ -1,10 +1,9 @@
 package io.avengers.ui;
 
-import javax.swing.JPanel;
-
 import java.util.List;
 
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class PanelLink extends JPanel {
 

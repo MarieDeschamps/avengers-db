@@ -1,7 +1,11 @@
 package io.avengers.ui;
 
-import javax.swing.JPanel;
+import java.awt.Component;
+
+import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import javax.swing.JTextPane;
 import javax.swing.text.MutableAttributeSet;
 import javax.swing.text.SimpleAttributeSet;
@@ -9,13 +13,6 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyledDocument;
 
 import io.avengers.adaptor.Detailable;
-
-import java.awt.FlowLayout;
-import java.awt.BorderLayout;
-import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
-
-import java.awt.Component;
 
 public class PanelElement extends JPanel {
 	JLabel jlabelElementPicture;

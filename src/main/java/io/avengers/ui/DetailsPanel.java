@@ -1,10 +1,10 @@
 package io.avengers.ui;
 
-import javax.swing.JPanel;
-import javax.swing.BoxLayout;
-
 import java.awt.Dimension;
 import java.awt.FlowLayout;
+
+import javax.swing.BoxLayout;
+import javax.swing.JPanel;
 
 public class DetailsPanel extends JPanel {
 

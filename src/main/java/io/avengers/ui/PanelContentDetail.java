@@ -1,10 +1,9 @@
 package io.avengers.ui;
 
-import javax.swing.JPanel;
-
 import java.awt.Dimension;
 
 import javax.swing.BoxLayout;
+import javax.swing.JPanel;
 
 public class PanelContentDetail extends JPanel {
 

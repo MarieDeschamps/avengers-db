@@ -1,7 +1,7 @@
 package io.avengers.ui;
 
-import javax.swing.JPanel;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class PanelInfo extends JPanel {
 	JLabel jtextpaneInfo;
