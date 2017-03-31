@@ -3,6 +3,7 @@ package io.avengers.service;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import io.avengers.domain.Hero;
@@ -27,6 +28,7 @@ public class ImageServiceTest {
 		iService = new ImageService();
 	}
 	
+	@Ignore
 	@Test
 	public void findLogo() {
 		assertTrue(iService.findLogo().length>0);
