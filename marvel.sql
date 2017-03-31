@@ -173,17 +173,6 @@ INSERT INTO `movie_hero` (`id_movie`, `id_hero`) VALUES
 -- --------------------------------------------------------
 
 --
--- Doublure de structure pour la vue `pop`
--- (Voir ci-dessous la vue réelle)
---
-CREATE TABLE `pop` (
-`name` varchar(16)
-,`ratio` decimal(39,8)
-);
-
--- --------------------------------------------------------
-
---
 -- Structure de la table `team`
 --
 
@@ -228,13 +217,6 @@ INSERT INTO `team_hero` (`team_id`, `hero_id`) VALUES
 (2, 15);
 
 -- --------------------------------------------------------
-
---
--- Structure de la vue `pop`
---
-DROP TABLE IF EXISTS `pop`;
-
-CREATE ALGORITHM=UNDEFINED DEFINER=`root`@`localhost` SQL SECURITY DEFINER VIEW `pop`  AS  select `t`.`name` AS `name`,avg((`h`.`likes` / (`h`.`likes` + `h`.`dislikes`))) AS `ratio` from ((`heroes` `h` join `team_hero` `th` on((`h`.`id` = `th`.`hero_id`))) join `team` `t` on((`th`.`team_id` = `t`.`team_id`))) where 1 group by `t`.`name` ;
 
 --
 -- Index pour les tables exportées
